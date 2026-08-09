@@ -100,7 +100,6 @@ HTML
       align-items: center;
     }
 
-    /* レスポンシブグリッドレイアウト (Mac: 3列, iPad: 2列, iPhone: 1列) */
     .news-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -163,6 +162,11 @@ HTML
       color: var(--text-sub);
     }
 
+    .card-links {
+      display: flex;
+      gap: 12px;
+    }
+
     .card-link {
       color: var(--accent-color);
       text-decoration: none;
@@ -172,7 +176,13 @@ HTML
       gap: 4px;
     }
 
-    .card-link:hover { text-decoration: underline; }
+    .card-link-sub {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card-link:hover, .card-link-sub:hover { text-decoration: underline; }
 
     .loader {
       text-align: center;
@@ -191,7 +201,7 @@ HTML
 
   <main>
     <div class="status-bar">
-      <span>毎朝のインプット・最新情報（自動翻訳）</span>
+      <span>毎朝のインプット・最新情報（全ページ日本語翻訳対応）</span>
       <span id="last-updated">更新中...</span>
     </div>
 
@@ -200,7 +210,6 @@ HTML
   </main>
 
   <script>
-    // CWO向け：ポジティブ心理学・Well-being関係の主要海外・国内RSSソース
     const RSS_SOURCES = [
       { name: "Greater Good Science Center (UC Berkeley)", url: "https://greatergood.berkeley.edu/site/rss/news" },
       { name: "Psychology Today (Positive Psych)", url: "https://www.psychologytoday.com/us/blog-topics/positive-psychology/feed" },
@@ -209,32 +218,32 @@ HTML
       { name: "ScienceDaily (Well-being)", url: "https://www.sciencedaily.com/rss/mind_brain/positivity.xml" }
     ];
 
-    // 無料の翻訳API (MyMemory API) を活用
     async function translateText(text) {
       if (!text) return "";
       try {
-        // 短くカットしてレスポンス高速化
         const cleanText = text.replace(/<[^>]*>?/gm, '').substring(0, 150);
         const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(cleanText)}&langpair=en|ja`);
         const data = await res.json();
         return data.responseData.translatedText || cleanText;
       } catch (e) {
-        return text; // 失敗時は原文を表示
+        return text;
       }
+    }
+
+    // Google翻訳の自動翻訳URLを生成する関数
+    function getTranslatedUrl(originalUrl) {
+      return `https://translate.google.com/translate?sl=auto&tl=ja&u=${encodeURIComponent(originalUrl)}`;
     }
 
     async function fetchRSS(source) {
       try {
-        // RSSをJSON化する無料APIを利用
         const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
         const data = await res.json();
         if (data.status !== 'ok') return [];
         
-        // 直近3件を抽出
         const items = data.items.slice(0, 3);
         
         return await Promise.all(items.map(async item => {
-          // 英語の場合は自動で日本語翻訳を実施
           const titleJa = await translateText(item.title);
           const snippetJa = await translateText(item.description);
           
@@ -243,6 +252,7 @@ HTML
             title: titleJa,
             snippet: snippetJa,
             link: item.link,
+            translatedLink: getTranslatedUrl(item.link),
             pubDate: new Date(item.pubDate).toLocaleDateString("ja-JP")
           };
         }));
@@ -284,7 +294,10 @@ HTML
           </div>
           <div class="card-footer">
             <span>${item.pubDate}</span>
-            <a class="card-link" href="${item.link}" target="_blank" rel="noopener">元ネタを読む ↗</a>
+            <div class="card-links">
+              <a class="card-link" href="${item.translatedLink}" target="_blank" rel="noopener">日本語で読む ↗</a>
+              <a class="card-link-sub" href="${item.link}" target="_blank" rel="noopener">(原文)</a>
+            </div>
           </div>
         `;
         grid.appendChild(card);
@@ -294,7 +307,6 @@ HTML
       updatedText.innerText = `最終更新: ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     }
 
-    // 初回起動時の読み込み
     window.onload = loadAllFeeds;
   </script>
 </body>
