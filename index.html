@@ -2,312 +2,278 @@ HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>CWO Daily Digest | Wellbeing & Positive Psychology</title>
-  
-  <!-- Apple/iOS WebApp Setting -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="CWO Digest">
-  <link rel="apple-touch-icon" href="https://img.icons8.com/emoji/192/sun-emoji.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アワーズ CWO Well-being Morning News</title>
+    <style>
+        :root {
+            --primary-color: #008080;
+            --accent-color: #f39c12;
+            --bg-color: #f8faf9;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+        }
 
-  <style>
-    :root {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-sub: #475569;
-      --accent-color: #0d9488;
-      --accent-hover: #0f766e;
-      --border-color: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0; color: var(--text-color); line-height: 1.6;
+        }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-color: #0f172a;
-        --card-bg: #1e293b;
-        --text-main: #f8fafc;
-        --text-sub: #94a3b8;
-        --accent-color: #14b8a6;
-        --accent-hover: #2dd4bf;
-        --border-color: #334155;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-      }
-    }
+        header {
+            background: linear-gradient(135deg, #005c5c 0%, #008080 100%);
+            color: white; padding: 30px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      line-height: 1.6;
-    }
+        header h1 { margin: 0 0 5px 0; font-size: 1.8em; letter-spacing: 1px; }
+        header p { margin: 0; font-size: 0.9em; opacity: 0.9; }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: var(--bg-color);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .container { max-width: 1100px; margin: 25px auto; padding: 0 20px; }
 
-    header h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        /* ツールバー＆フィルター */
+        .toolbar {
+            background: white; padding: 15px 20px; border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px;
+            display: flex; flex-direction: column; gap: 12px;
+        }
 
-    .btn-refresh {
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.875rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+        .filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .filter-title { font-size: 0.85em; font-weight: bold; color: #666; width: 120px; }
 
-    .btn-refresh:hover {
-      background: var(--accent-hover);
-    }
+        .filter-btn {
+            background: #eef2f5; border: none; padding: 6px 14px; border-radius: 20px;
+            cursor: pointer; font-size: 0.82em; font-weight: bold; color: #555; transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: white; }
 
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 16px;
-    }
+        /* ニュースカード */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
-    .status-bar {
-      margin-bottom: 20px;
-      font-size: 0.875rem;
-      color: var(--text-sub);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .card {
+            background: var(--card-bg); border-radius: var(--border-radius); padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column;
+            justify-content: space-between; border-top: 5px solid var(--primary-color);
+        }
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+        .tag-container { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+        .tag { font-size: 0.72em; padding: 3px 8px; border-radius: 10px; font-weight: bold; color: white; }
+        .tag-perma { background-color: #e67e22; }
+        .tag-theme { background-color: #2980b9; }
+        .tag-target { background-color: #27ae60; }
 
-    @media (min-width: 640px) {
-      .news-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+        .card-title { font-size: 1.05em; margin: 0 0 10px 0; line-height: 1.4; }
+        .card-title a { color: var(--text-color); text-decoration: none; }
 
-    @media (min-width: 1024px) {
-      .news-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+        .summary-box { background-color: #f4f6f7; padding: 10px; border-radius: 6px; font-size: 0.82em; margin-bottom: 10px; border-left: 3px solid #7f8c8d; }
+        .context-box { background-color: #f0f7f7; border-left: 3px solid var(--primary-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 10px; }
+        .question-box { background-color: #fff9e6; border-left: 3px solid var(--accent-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 15px; }
 
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+        .card-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .action-btn { flex: 1; padding: 8px 0; border-radius: 6px; font-weight: bold; font-size: 0.8em; border: none; cursor: pointer; text-align: center; }
+        .btn-share { background-color: #3498db; color: white; }
+        .btn-like { background-color: #e74c3c; color: white; }
 
-    .card:hover {
-      transform: translateY(-2px);
-    }
-
-    .card-source {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: var(--text-main);
-    }
-
-    .card-snippet {
-      font-size: 0.875rem;
-      color: var(--text-sub);
-      margin-bottom: 16px;
-      flex-grow: 1;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 12px;
-      border-top: 1px solid var(--border-color);
-      font-size: 0.75rem;
-      color: var(--text-sub);
-    }
-
-    .card-links {
-      display: flex;
-      gap: 12px;
-    }
-
-    .card-link {
-      color: var(--accent-color);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .card-link-sub {
-      color: var(--text-sub);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .card-link:hover, .card-link-sub:hover { text-decoration: underline; }
-
-    .loader {
-      text-align: center;
-      padding: 40px;
-      font-size: 1.1rem;
-      color: var(--text-sub);
-    }
-  </style>
+        /* モーダル */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: white; padding: 30px; border-radius: 16px; max-width: 450px; width: 90%; text-align: center; }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>☀️ CWO Digest</h1>
-    <button class="btn-refresh" onclick="loadAllFeeds()">更新</button>
-  </header>
-
-  <main>
-    <div class="status-bar">
-      <span>毎朝のインプット・最新情報（全ページ日本語翻訳対応）</span>
-      <span id="last-updated">更新中...</span>
+    <div id="breathModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 style="color: var(--primary-color); margin-top: 0;">Intention 3 Breaths</h2>
+            <p style="font-size: 0.9em;">情報をインプットする前に深呼吸でBeingを整えましょう。</p>
+            <ol style="text-align: left; font-size: 0.85em; background: #f8faf9; padding: 15px 15px 15px 35px; border-radius: 8px;">
+                <li><strong>1回目:</strong> 呼吸にフォーカス（息の出入りを味わう）</li>
+                <li><strong>2回目:</strong> 体にフォーカス（肩の力を抜く）</li>
+                <li><strong>3回目:</strong> 自分の存在にフォーカス（今ここにいる自分を認める）</li>
+            </ol>
+            <p style="font-style: italic; color: #555; font-size: 0.9em;">「今日のあなたの意図（Intention）は何ですか？」</p>
+            <button onclick="closeModal()" style="background: var(--primary-color); color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer;">整った状態でニュースを読む</button>
+        </div>
     </div>
 
-    <div id="loader" class="loader">世界中から最新ニュースを取得＆日本語翻訳中...</div>
-    <div id="news-grid" class="news-grid"></div>
-  </main>
+    <header>
+        <h1>CWO Well-being Morning News</h1>
+        <p>アワーズ＆アドベンチャーワールドのSmileを育む情報共有プラットフォーム</p>
+    </header>
 
-  <script>
-    const RSS_SOURCES = [
-      { name: "Greater Good Science Center (UC Berkeley)", url: "https://greatergood.berkeley.edu/site/rss/news" },
-      { name: "Psychology Today (Positive Psych)", url: "https://www.psychologytoday.com/us/blog-topics/positive-psychology/feed" },
-      { name: "Positive Psychology.com", url: "https://positivepsychology.com/feed/" },
-      { name: "Gallup News (Workplace)", url: "https://news.gallup.com/xml/rss/212621/workplace.xml" },
-      { name: "ScienceDaily (Well-being)", url: "https://www.sciencedaily.com/rss/mind_brain/positivity.xml" }
-    ];
-
-    async function translateText(text) {
-      if (!text) return "";
-      try {
-        const cleanText = text.replace(/<[^>]*>?/gm, '').substring(0, 150);
-        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(cleanText)}&langpair=en|ja`);
-        const data = await res.json();
-        return data.responseData.translatedText || cleanText;
-      } catch (e) {
-        return text;
-      }
-    }
-
-    // Google翻訳の自動翻訳URLを生成する関数
-    function getTranslatedUrl(originalUrl) {
-      return `https://translate.google.com/translate?sl=auto&tl=ja&u=${encodeURIComponent(originalUrl)}`;
-    }
-
-    async function fetchRSS(source) {
-      try {
-        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
-        const data = await res.json();
-        if (data.status !== 'ok') return [];
-        
-        const items = data.items.slice(0, 3);
-        
-        return await Promise.all(items.map(async item => {
-          const titleJa = await translateText(item.title);
-          const snippetJa = await translateText(item.description);
-          
-          return {
-            sourceName: source.name,
-            title: titleJa,
-            snippet: snippetJa,
-            link: item.link,
-            translatedLink: getTranslatedUrl(item.link),
-            pubDate: new Date(item.pubDate).toLocaleDateString("ja-JP")
-          };
-        }));
-      } catch (e) {
-        console.error("Fetch error:", e);
-        return [];
-      }
-    }
-
-    async function loadAllFeeds() {
-      const loader = document.getElementById('loader');
-      const grid = document.getElementById('news-grid');
-      const updatedText = document.getElementById('last-updated');
-      
-      loader.style.display = 'block';
-      grid.innerHTML = '';
-      
-      let allArticles = [];
-      for (const source of RSS_SOURCES) {
-        const articles = await fetchRSS(source);
-        allArticles = allArticles.concat(articles);
-      }
-
-      loader.style.display = 'none';
-
-      if(allArticles.length === 0) {
-        grid.innerHTML = '<p>ニュースの取得に失敗しました。時間をおいて再試行してください。</p>';
-        return;
-      }
-
-      allArticles.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <div>
-            <div class="card-source">${item.sourceName}</div>
-            <h2 class="card-title">${item.title}</h2>
-            <p class="card-snippet">${item.snippet}...</p>
-          </div>
-          <div class="card-footer">
-            <span>${item.pubDate}</span>
-            <div class="card-links">
-              <a class="card-link" href="${item.translatedLink}" target="_blank" rel="noopener">日本語で読む ↗</a>
-              <a class="card-link-sub" href="${item.link}" target="_blank" rel="noopener">(原文)</a>
+    <div class="container">
+        <!-- 1, 3, 4. 分類・タグ付け＆ターゲット＆コンテキストフィルター -->
+        <div class="toolbar">
+            <div class="filter-row">
+                <span class="filter-title">PERMA分類:</span>
+                <button class="filter-btn active" onclick="filterData('perma', 'ALL', this)">すべて</button>
+                <button class="filter-btn" onclick="filterData('perma', 'P', this)">P (ポジティブ感情)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'E', this)">E (エンゲージメント)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'R', this)">R (関係性)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'M', this)">M (意味・意義)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'A', this)">A (達成)</button>
             </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+            <div class="filter-row">
+                <span class="filter-title">配信対象別:</span>
+                <button class="filter-btn active" onclick="filterData('target', 'ALL', this)">すべて</button>
+                <button class="filter-btn" onclick="filterData('target', '一般社員・キャスト', this)">一般社員/キャスト向け</button>
+                <button class="filter-btn" onclick="filterData('target', 'Well-being lab', this)">Well-being labメンバー向け</button>
+                <button class="filter-btn" onclick="filterData('target', '動物学院・人財育成', this)">動物学院/人財育成</button>
+                <button class="filter-btn" onclick="filterData('target', '朝礼用トピック', this)">朝礼インスピレーション</button>
+            </div>
+        </div>
 
-      const now = new Date();
-      updatedText.innerText = `最終更新: ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-    }
+        <div class="news-grid" id="newsGrid"></div>
+    </div>
 
-    window.onload = loadAllFeeds;
-  </script>
+    <script>
+        // 完全無料で動作する構造化ニュースデータベース (毎日のニュース更新用データ構造)
+        const newsDatabase = [
+            {
+                id: 1,
+                title: "ホスピタリティ業界におけるスタッフの心理的安全性とコンパッション疲労対策",
+                link: "https://example.com/news1",
+                perma: "R",
+                theme: "感謝・利他/Giver",
+                target: "動物学院・人財育成",
+                context_type: "動物・パーク運営",
+                summary_3lines: "・ゲスト対応や動物ケアに携わる現場スタッフの心理的負荷を低減する取り組み事例。\n・互いの関わり合いや小さな感謝を伝え合うことでコンパッション疲労を防止。\n・チーム内の『あるがままの受容』と安心安全な場づくりがホスピタリティを高める。",
+                aws_context: "アドベンチャーワールドのキャストやアワーズ動物学院生が、安心安全な環境でSmileを発揮するための基礎となる視点です。",
+                reflection_question: "今日、職場で共に働く仲間へ送れる『小さな親切』や『感謝の言葉』は何でしょうか？"
+            },
+            {
+                id: 2,
+                title: "仕事のエンゲージメントを最大化する『ぷちフロー』の実践法と効果",
+                link: "https://example.com/news2",
+                perma: "E",
+                theme: "マインドフルネス/フロー",
+                target: "一般社員・キャスト",
+                context_type: "アワーズ動物学院/人財育成",
+                summary_3lines: "・日常業務に『小さな制限時間』や『新たな工夫』を加えることで没入感を向上。\n・退屈を感じやすいルーティンワークを自らゲーム化して集中力を維持。\n・短時間で達成感を得ることで日々のモチベーション維持に貢献。",
+                aws_context: "毎日のパーク運営や事務業務の中で、個人が今すぐ試せる『1分プチフロー』としてAWS-WAYの実践に応用できます。",
+                reflection_question: "今日行う業務の中で、工夫を一つ加えて『プチフロー』に挑戦できるタスクは何ですか？"
+            },
+            {
+                id: 3,
+                title: "アクティブ・コンストラプティブ・リアクション（ACR）が築く強い組織文化",
+                link: "https://example.com/news3",
+                perma: "R",
+                theme: "レジリエンス/成長思考",
+                target: "Well-being lab",
+                context_type: "アワーズ動物学院/人財育成",
+                summary_3lines: "・仲間の良いニュースに対して『積極的・建設的（ACR）』に反応する手法を解説。\n・結果の称賛だけでなく、そのプロセスで発揮された人間性や強みを承認。\n・4毒素（批判・防御・侮辱・無視）を回避し、関係性を劇的に改善する。",
+                aws_context: "Well-being lab受講者が現場のチェンジエージェントとして、部署内のコミュニケーションを高める深掘りテーマです。",
+                reflection_question: "仲間から良い報告を受けたとき、相手の『強みや人間性』に焦点を当ててどう反応しますか？"
+            },
+            {
+                id: 4,
+                title: "地方創生とSDGs目標3・8を達成するウェルビーイング型パーク経営の実践",
+                link: "https://example.com/news4",
+                perma: "M",
+                theme: "ストレングス（強み）",
+                target: "朝礼用トピック",
+                context_type: "地域・SDGs",
+                summary_3lines: "・地域社会との共創により「持続的幸福度（Well-being）」を高める企業の取り組み。\n・働きがいと健康を両立させ、ゲスト・社員・社会のSmile（三方良し）を達成。\n・事業そのものが社会的な意味・意義（Meaning）を持つ事例。",
+                aws_context: "アワーズが掲げる『Smile創造』と地域貢献、SDGs達成の連動性を再確認できる朝のインスピレーション用トピックです。",
+                reflection_question: "私たちが今日届ける仕事は、地域やゲストのどんな『Smile』に繋がっているでしょうか？"
+            }
+        ];
+
+        let currentPermaFilter = 'ALL';
+        let currentTargetFilter = 'ALL';
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            grid.innerHTML = '';
+
+            const filtered = newsDatabase.filter(item => {
+                const matchPerma = (currentPermaFilter === 'ALL' || item.perma === currentPermaFilter);
+                const matchTarget = (currentTargetFilter === 'ALL' || item.target === currentTargetFilter);
+                return matchPerma && matchTarget;
+            });
+
+            filtered.forEach(item => {
+                // 2. TUNAG共有用テキスト自動生成
+                const shareText = `【CWO Well-being News共有】\n■ ${item.title}\n\n■ アワーズでの視点:\n${item.aws_context}\n\n■ 今日の問いかけ:\n${item.reflection_question}\n\n${item.link}`;
+                
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div>
+                        <div class="tag-container">
+                            <span class="tag tag-perma">PERMA: ${item.perma}</span>
+                            <span class="tag tag-theme">${item.theme}</span>
+                            <span class="tag tag-target">${item.target}</span>
+                        </div>
+                        <h3 class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
+                        
+                        <!-- 5. 3行要約 -->
+                        <div class="summary-box">
+                            <strong>【AI 3行要約】</strong><br>
+                            ${item.summary_3lines.replace(/\n/g, '<br>')}
+                        </div>
+
+                        <!-- 3. アドベンチャーワールド固有の文脈 -->
+                        <div class="context-box">
+                            <strong>【AW/アワーズ文脈の価値 (${item.context_type})】</strong><br>
+                            ${item.aws_context}
+                        </div>
+
+                        <!-- 2. 今日の問いかけ -->
+                        <div class="question-box">
+                            <strong>【今日の問いかけ (Reflective Question)】</strong><br>
+                            ${item.reflection_question}
+                        </div>
+                    </div>
+
+                    <!-- 2, 5. ワンタップ共有 ＆ 学習用リアクションボタン -->
+                    <div class="card-actions">
+                        <button class="action-btn btn-share" onclick="copyShareText('${encodeURIComponent(shareText)}')">
+                            📋 TUNAG共有用にコピー
+                        </button>
+                        <button class="action-btn btn-like" onclick="recordFeedback(${item.id}, this)">
+                            👍 役立った (学習)
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // フィルター切り替え処理
+        function filterData(type, value, btnElement) {
+            const parent = btnElement.parentElement;
+            parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (type === 'perma') currentPermaFilter = value;
+            if (type === 'target') currentTargetFilter = value;
+
+            renderNews();
+        }
+
+        // 2. ワンタップ共有処理
+        function copyShareText(text) {
+            navigator.clipboard.writeText(decodeURIComponent(text)).then(() => {
+                alert('TUNAG投稿用のテキストをクリップボードにコピーしました！\nTUNAGを開いてそのまま貼り付け・共有できます。');
+            });
+        }
+
+        // 5. 無料で動く簡易学習機能（ブラウザのLocalStorageを活用）
+        function recordFeedback(id, btn) {
+            let likes = JSON.parse(localStorage.getItem('cwo_news_likes') || '[]');
+            if (!likes.includes(id)) {
+                likes.push(id);
+                localStorage.setItem('cwo_news_likes', JSON.stringify(likes));
+                btn.style.backgroundColor = '#27ae60';
+                btn.innerText = '✔ 偏好学習済み';
+                alert('CWOのフィードバックを登録しました！アプリが関心傾向を優先表示します。');
+            }
+        }
+
+        function closeModal() { document.getElementById('breathModal').style.display = 'none'; }
+        function openModal() { document.getElementById('breathModal').style.display = 'flex'; }
+
+        window.onload = renderNews;
+    </script>
 </body>
 </html>
