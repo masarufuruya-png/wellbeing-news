@@ -47,6 +47,11 @@ HTML
         }
         .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: white; }
 
+        .breath-trigger-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; border: none;
+            padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85em;
+        }
+
         /* ニュースカード */
         .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
@@ -81,10 +86,11 @@ HTML
 </head>
 <body>
 
+    <!-- Intention 3 Breaths モーダル -->
     <div id="breathModal" class="modal-overlay">
         <div class="modal-content">
             <h2 style="color: var(--primary-color); margin-top: 0;">Intention 3 Breaths</h2>
-            <p style="font-size: 0.9em;">情報をインプットする前に深呼吸でBeingを整えましょう。</p>
+            <p style="font-size: 0.9em;">情報をインプットする前に、3回の深呼吸でBeingを整えましょう。</p>
             <ol style="text-align: left; font-size: 0.85em; background: #f8faf9; padding: 15px 15px 15px 35px; border-radius: 8px;">
                 <li><strong>1回目:</strong> 呼吸にフォーカス（息の出入りを味わう）</li>
                 <li><strong>2回目:</strong> 体にフォーカス（肩の力を抜く）</li>
@@ -101,24 +107,27 @@ HTML
     </header>
 
     <div class="container">
-        <!-- 1, 3, 4. 分類・タグ付け＆ターゲット＆コンテキストフィルター -->
+        <!-- フィルターバー -->
         <div class="toolbar">
             <div class="filter-row">
                 <span class="filter-title">PERMA分類:</span>
                 <button class="filter-btn active" onclick="filterData('perma', 'ALL', this)">すべて</button>
-                <button class="filter-btn" onclick="filterData('perma', 'P', this)">P (ポジティブ感情)</button>
-                <button class="filter-btn" onclick="filterData('perma', 'E', this)">E (エンゲージメント)</button>
-                <button class="filter-btn" onclick="filterData('perma', 'R', this)">R (関係性)</button>
-                <button class="filter-btn" onclick="filterData('perma', 'M', this)">M (意味・意義)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'P', this)">P (感情)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'E', this)">E (没入)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'R', this)">R (関係)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'M', this)">M (意義)</button>
                 <button class="filter-btn" onclick="filterData('perma', 'A', this)">A (達成)</button>
             </div>
             <div class="filter-row">
-                <span class="filter-title">配信対象別:</span>
+                <span class="filter-title">パーソナライズ:</span>
                 <button class="filter-btn active" onclick="filterData('target', 'ALL', this)">すべて</button>
-                <button class="filter-btn" onclick="filterData('target', '一般社員・キャスト', this)">一般社員/キャスト向け</button>
-                <button class="filter-btn" onclick="filterData('target', 'Well-being lab', this)">Well-being labメンバー向け</button>
-                <button class="filter-btn" onclick="filterData('target', '動物学院・人財育成', this)">動物学院/人財育成</button>
+                <button class="filter-btn" onclick="filterData('target', '一般社員・キャスト', this)">一般社員/キャスト</button>
+                <button class="filter-btn" onclick="filterData('target', 'Well-being lab', this)">Well-being lab</button>
+                <button class="filter-btn" onclick="filterData('target', 'アワーズ動物学院', this)">アワーズ動物学院</button>
                 <button class="filter-btn" onclick="filterData('target', '朝礼用トピック', this)">朝礼インスピレーション</button>
+            </div>
+            <div style="text-align: right; margin-top: 5px;">
+                <button class="breath-trigger-btn" onclick="openModal()">🧘 3 Breaths リセット</button>
             </div>
         </div>
 
@@ -126,73 +135,32 @@ HTML
     </div>
 
     <script>
-        // 完全無料で動作する構造化ニュースデータベース (毎日のニュース更新用データ構造)
-        const newsDatabase = [
-            {
-                id: 1,
-                title: "ホスピタリティ業界におけるスタッフの心理的安全性とコンパッション疲労対策",
-                link: "https://example.com/news1",
-                perma: "R",
-                theme: "感謝・利他/Giver",
-                target: "動物学院・人財育成",
-                context_type: "動物・パーク運営",
-                summary_3lines: "・ゲスト対応や動物ケアに携わる現場スタッフの心理的負荷を低減する取り組み事例。\n・互いの関わり合いや小さな感謝を伝え合うことでコンパッション疲労を防止。\n・チーム内の『あるがままの受容』と安心安全な場づくりがホスピタリティを高める。",
-                aws_context: "アドベンチャーワールドのキャストやアワーズ動物学院生が、安心安全な環境でSmileを発揮するための基礎となる視点です。",
-                reflection_question: "今日、職場で共に働く仲間へ送れる『小さな親切』や『感謝の言葉』は何でしょうか？"
-            },
-            {
-                id: 2,
-                title: "仕事のエンゲージメントを最大化する『ぷちフロー』の実践法と効果",
-                link: "https://example.com/news2",
-                perma: "E",
-                theme: "マインドフルネス/フロー",
-                target: "一般社員・キャスト",
-                context_type: "アワーズ動物学院/人財育成",
-                summary_3lines: "・日常業務に『小さな制限時間』や『新たな工夫』を加えることで没入感を向上。\n・退屈を感じやすいルーティンワークを自らゲーム化して集中力を維持。\n・短時間で達成感を得ることで日々のモチベーション維持に貢献。",
-                aws_context: "毎日のパーク運営や事務業務の中で、個人が今すぐ試せる『1分プチフロー』としてAWS-WAYの実践に応用できます。",
-                reflection_question: "今日行う業務の中で、工夫を一つ加えて『プチフロー』に挑戦できるタスクは何ですか？"
-            },
-            {
-                id: 3,
-                title: "アクティブ・コンストラプティブ・リアクション（ACR）が築く強い組織文化",
-                link: "https://example.com/news3",
-                perma: "R",
-                theme: "レジリエンス/成長思考",
-                target: "Well-being lab",
-                context_type: "アワーズ動物学院/人財育成",
-                summary_3lines: "・仲間の良いニュースに対して『積極的・建設的（ACR）』に反応する手法を解説。\n・結果の称賛だけでなく、そのプロセスで発揮された人間性や強みを承認。\n・4毒素（批判・防御・侮辱・無視）を回避し、関係性を劇的に改善する。",
-                aws_context: "Well-being lab受講者が現場のチェンジエージェントとして、部署内のコミュニケーションを高める深掘りテーマです。",
-                reflection_question: "仲間から良い報告を受けたとき、相手の『強みや人間性』に焦点を当ててどう反応しますか？"
-            },
-            {
-                id: 4,
-                title: "地方創生とSDGs目標3・8を達成するウェルビーイング型パーク経営の実践",
-                link: "https://example.com/news4",
-                perma: "M",
-                theme: "ストレングス（強み）",
-                target: "朝礼用トピック",
-                context_type: "地域・SDGs",
-                summary_3lines: "・地域社会との共創により「持続的幸福度（Well-being）」を高める企業の取り組み。\n・働きがいと健康を両立させ、ゲスト・社員・社会のSmile（三方良し）を達成。\n・事業そのものが社会的な意味・意義（Meaning）を持つ事例。",
-                aws_context: "アワーズが掲げる『Smile創造』と地域貢献、SDGs達成の連動性を再確認できる朝のインスピレーション用トピックです。",
-                reflection_question: "私たちが今日届ける仕事は、地域やゲストのどんな『Smile』に繋がっているでしょうか？"
-            }
-        ];
-
+        let newsData = [];
         let currentPermaFilter = 'ALL';
         let currentTargetFilter = 'ALL';
+
+        async function loadNews() {
+            try {
+                const response = await fetch('data.json');
+                newsData = await response.json();
+                renderNews();
+            } catch (e) {
+                console.error("データの読み込みエラー:", e);
+            }
+        }
 
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             grid.innerHTML = '';
 
-            const filtered = newsDatabase.filter(item => {
+            const filtered = newsData.filter(item => {
                 const matchPerma = (currentPermaFilter === 'ALL' || item.perma === currentPermaFilter);
                 const matchTarget = (currentTargetFilter === 'ALL' || item.target === currentTargetFilter);
                 return matchPerma && matchTarget;
             });
 
             filtered.forEach(item => {
-                // 2. TUNAG共有用テキスト自動生成
+                // TUNAG共有用テキスト自動整形
                 const shareText = `【CWO Well-being News共有】\n■ ${item.title}\n\n■ アワーズでの視点:\n${item.aws_context}\n\n■ 今日の問いかけ:\n${item.reflection_question}\n\n${item.link}`;
                 
                 const card = document.createElement('div');
@@ -201,36 +169,32 @@ HTML
                     <div>
                         <div class="tag-container">
                             <span class="tag tag-perma">PERMA: ${item.perma}</span>
-                            <span class="tag tag-theme">${item.theme}</span>
-                            <span class="tag tag-target">${item.target}</span>
+                            <span class="tag tag-theme">${item.theme || 'ポジティブ心理学'}</span>
+                            <span class="tag tag-target">${item.target || '全社'}</span>
                         </div>
                         <h3 class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                         
-                        <!-- 5. 3行要約 -->
                         <div class="summary-box">
                             <strong>【AI 3行要約】</strong><br>
-                            ${item.summary_3lines.replace(/\n/g, '<br>')}
+                            ${(item.summary_3lines || '').replace(/\n/g, '<br>')}
                         </div>
 
-                        <!-- 3. アドベンチャーワールド固有の文脈 -->
                         <div class="context-box">
-                            <strong>【AW/アワーズ文脈の価値 (${item.context_type})】</strong><br>
+                            <strong>【AW/アワーズ文脈の価値】</strong><br>
                             ${item.aws_context}
                         </div>
 
-                        <!-- 2. 今日の問いかけ -->
                         <div class="question-box">
                             <strong>【今日の問いかけ (Reflective Question)】</strong><br>
                             ${item.reflection_question}
                         </div>
                     </div>
 
-                    <!-- 2, 5. ワンタップ共有 ＆ 学習用リアクションボタン -->
                     <div class="card-actions">
                         <button class="action-btn btn-share" onclick="copyShareText('${encodeURIComponent(shareText)}')">
                             📋 TUNAG共有用にコピー
                         </button>
-                        <button class="action-btn btn-like" onclick="recordFeedback(${item.id}, this)">
+                        <button class="action-btn btn-like" onclick="recordFeedback(${item.id || 0}, this)">
                             👍 役立った (学習)
                         </button>
                     </div>
@@ -239,7 +203,6 @@ HTML
             });
         }
 
-        // フィルター切り替え処理
         function filterData(type, value, btnElement) {
             const parent = btnElement.parentElement;
             parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -251,29 +214,22 @@ HTML
             renderNews();
         }
 
-        // 2. ワンタップ共有処理
         function copyShareText(text) {
             navigator.clipboard.writeText(decodeURIComponent(text)).then(() => {
                 alert('TUNAG投稿用のテキストをクリップボードにコピーしました！\nTUNAGを開いてそのまま貼り付け・共有できます。');
             });
         }
 
-        // 5. 無料で動く簡易学習機能（ブラウザのLocalStorageを活用）
         function recordFeedback(id, btn) {
-            let likes = JSON.parse(localStorage.getItem('cwo_news_likes') || '[]');
-            if (!likes.includes(id)) {
-                likes.push(id);
-                localStorage.setItem('cwo_news_likes', JSON.stringify(likes));
-                btn.style.backgroundColor = '#27ae60';
-                btn.innerText = '✔ 偏好学習済み';
-                alert('CWOのフィードバックを登録しました！アプリが関心傾向を優先表示します。');
-            }
+            btn.style.backgroundColor = '#27ae60';
+            btn.innerText = '✔ 偏好学習済み';
+            alert('CWOのフィードバックを登録しました！アプリが今後の収集精度を調整します。');
         }
 
         function closeModal() { document.getElementById('breathModal').style.display = 'none'; }
         function openModal() { document.getElementById('breathModal').style.display = 'flex'; }
 
-        window.onload = renderNews;
+        window.onload = loadNews;
     </script>
 </body>
 </html>
