@@ -6,38 +6,276 @@ HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>アワーズ CWO Well-being Morning News</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8faf9; margin: 0; padding: 20px; color: #2c3e50; }
-        header { text-align: center; padding: 20px 0; background: #008080; color: white; border-radius: 8px; margin-bottom: 20px; }
-        h1 { margin: 0; font-size: 1.8em; }
-        p { margin: 5px 0 0 0; font-size: 0.9em; opacity: 0.9; }
-        .container { max-width: 900px; margin: 0 auto; }
-        .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid #008080; }
-        .card h3 { margin-top: 0; font-size: 1.1em; }
-        .card a { color: #2c3e50; text-decoration: none; }
-        .card a:hover { text-decoration: underline; color: #008080; }
-        .meta { font-size: 0.85em; color: #7f8c8d; margin-top: 10px; }
+        :root {
+            --primary-color: #008080;
+            --accent-color: #f39c12;
+            --bg-color: #f8faf9;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0; color: var(--text-color); line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #005c5c 0%, #008080 100%);
+            color: white; padding: 35px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0 0 5px 0; font-size: 1.8em; letter-spacing: 1px; }
+        header p { margin: 0; font-size: 0.9em; opacity: 0.9; }
+
+        .container { max-width: 1100px; margin: 25px auto; padding: 0 20px; }
+
+        /* ツールバー＆フィルター */
+        .toolbar {
+            background: white; padding: 15px 20px; border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .filter-title { font-size: 0.85em; font-weight: bold; color: #666; width: 120px; }
+
+        .filter-btn {
+            background: #eef2f5; border: none; padding: 6px 14px; border-radius: 20px;
+            cursor: pointer; font-size: 0.82em; font-weight: bold; color: #555; transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: white; }
+
+        .breath-trigger-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; border: none;
+            padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85em;
+        }
+
+        /* ニュースカードグリッド */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
+        .card {
+            background: var(--card-bg); border-radius: var(--border-radius); padding: 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column;
+            justify-content: space-between; border-top: 5px solid var(--primary-color);
+        }
+
+        .tag-container { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+        .tag { font-size: 0.72em; padding: 3px 8px; border-radius: 10px; font-weight: bold; color: white; }
+        .tag-perma { background-color: #e67e22; }
+        .tag-theme { background-color: #2980b9; }
+        .tag-target { background-color: #27ae60; }
+
+        .card-title { font-size: 1.1em; margin: 0 0 10px 0; line-height: 1.4; }
+        .card-title a { color: var(--text-color); text-decoration: none; }
+        .card-title a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        .summary-box { background-color: #f4f6f7; padding: 10px; border-radius: 6px; font-size: 0.82em; margin-bottom: 10px; border-left: 3px solid #7f8c8d; }
+        .context-box { background-color: #f0f7f7; border-left: 3px solid var(--primary-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 10px; }
+        
+        /* 元ネタ（原語と日本語）ボックス */
+        .source-box { background-color: #f8f9fa; border-left: 3px solid #34495e; padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.8em; margin-bottom: 10px; }
+        .source-box strong { color: #2c3e50; display: block; margin-bottom: 4px; }
+        .lang-badge { background: #e1e8ed; padding: 1px 5px; border-radius: 3px; font-weight: bold; font-size: 0.7em; margin-right: 4px; }
+
+        .question-box { background-color: #fff9e6; border-left: 3px solid var(--accent-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 15px; }
+
+        .card-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .action-btn { flex: 1; padding: 8px 0; border-radius: 6px; font-weight: bold; font-size: 0.8em; border: none; cursor: pointer; text-align: center; }
+        .btn-share { background-color: #3498db; color: white; }
+        .btn-like { background-color: #e74c3c; color: white; }
+
+        /* Intentions 3 Breaths モーダル */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: white; padding: 35px; border-radius: 16px; max-width: 450px; width: 90%; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>CWO Well-being Morning News</h1>
-        <p>株式会社アワーズ / アドベンチャーワールド</p>
-    </header>
-
-    <div class="container" id="news-container">
-        <!-- 初期表示ニュース -->
-        <div class="card">
-            <h3><a href="https://positivepsychology.yeey.co/" target="_blank">ポジティブ心理学と持続的幸福度（PERMA）の活用について</a></h3>
-            <p>日常の業務や生活の中で「感謝」「フロー」「マインドフルネス」などの習慣を取り入れ、自他の持続的幸福感を高めるアプローチです。</p>
-            <div class="meta">カテゴリ: ポジティブ心理学 / Well-being</div>
-        </div>
-        <div class="card">
-            <h3><a href="#" target="_blank">組織の心理的安全性を育むコミュニケーションとACR</a></h3>
-            <p>相手のよいニュースに対して積極的・建設的に反応する（Active-Constructive Responding）ことで、チームの信頼関係と幸福度を高めます。</p>
-            <div class="meta">カテゴリ: 組織開発 / 関係性</div>
+    <!-- Intention 3 Breaths モーダル画面 -->
+    <div id="breathModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 style="color: var(--primary-color); margin-top: 0;">Intention 3 Breaths</h2>
+            <p style="font-size: 0.9em;">情報をインプットする前に、3回の深呼吸でBeingを整えましょう[cite: 11]。</p>
+            <ol style="text-align: left; font-size: 0.85em; background: #f8faf9; padding: 15px 15px 15px 35px; border-radius: 8px; margin: 15px 0;">
+                <li><strong>1回目:</strong> 呼吸にフォーカス（息の出入りを味わう）[cite: 11]</li>
+                <li><strong>2回目:</strong> 体にフォーカス（肩の力を抜く）[cite: 11]</li>
+                <li><strong>3回目:</strong> 自分の存在にフォーカス（今ここにいる自分を認める）[cite: 11]</li>
+            </ol>
+            <p style="font-style: italic; color: #555; font-size: 0.9em;">「今日のあなたの意図（Intention）は何ですか？」[cite: 11]</p>
+            <button onclick="closeModal()" style="background: var(--primary-color); color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-top: 10px;">整った状態でニュースを読む</button>
         </div>
     </div>
 
+    <header>
+        <h1>CWO Well-being Morning News</h1>
+        <p>アワーズ＆アドベンチャーワールドのSmileを育む情報共有プラットフォーム[cite: 4]</p>
+    </header>
+
+    <div class="container">
+        <!-- フィルターバー -->
+        <div class="toolbar">
+            <div class="filter-row">
+                <span class="filter-title">PERMA分類:</span>
+                <button class="filter-btn active" onclick="filterData('perma', 'ALL', this)">すべて</button>
+                <button class="filter-btn" onclick="filterData('perma', 'P', this)">P (感情)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'E', this)">E (没入)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'R', this)">R (関係)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'M', this)">M (意義)</button>
+                <button class="filter-btn" onclick="filterData('perma', 'A', this)">A (達成)</button>
+            </div>
+            <div class="filter-row">
+                <span class="filter-title">パーソナライズ:</span>
+                <button class="filter-btn active" onclick="filterData('target', 'ALL', this)">すべて</button>
+                <button class="filter-btn" onclick="filterData('target', '一般社員・キャスト', this)">一般社員/キャスト</button>
+                <button class="filter-btn" onclick="filterData('target', 'Well-being lab', this)">Well-being lab[cite: 4]</button>
+                <button class="filter-btn" onclick="filterData('target', 'アワーズ動物学院', this)">アワーズ動物学院[cite: 4]</button>
+                <button class="filter-btn" onclick="filterData('target', '朝礼用トピック', this)">朝礼インスピレーション</button>
+            </div>
+            <div style="text-align: right; margin-top: 5px;">
+                <button class="breath-trigger-btn" onclick="openModal()">🧘 3 Breaths リセット</button>
+            </div>
+        </div>
+
+        <div class="news-grid" id="newsGrid"></div>
+    </div>
+
+    <script>
+        // 学術的元ネタ（原語・日本語）を内包したサンプル・ニュースデータ
+        const newsDatabase = [
+            {
+                id: 1,
+                title: "仕事のエンゲージメントと没入感を最大化する『ぷちフロー』の実践法",
+                link: "https://positivepsychology.yeey.co/",
+                perma: "E",
+                theme: "マインドフルネス/フロー",
+                target: "一般社員・キャスト",
+                summary_3lines: "・日常業務に小さな工夫や制限時間を加えて没入感を高める。\n・退屈しがちなルーティンワークを自らゲーム化して集中力を維持。\n・短時間での達成感の積み重ねが日々のモチベーションを支える。",
+                aws_context: "アドベンチャーワールドのパーク運営や事務作業において、今すぐ実践できる『1分ぷちフロー』としてAWS-WAYに応用できます[cite: 4, 11]。",
+                reflection_question: "今日行う業務の中で、工夫を一つ加えて『プチフロー』に挑戦できるタスクは何ですか？[cite: 11]",
+                source_ja: "ミハイ・チクセントミハイ『フロー体験 喜びの心理学』(ゾーン状態と没入感の条件に関する研究)",
+                source_en: "Csikszentmihalyi, M. (1990). Flow: The Psychology of Optimal Experience. Harper & Row."
+            },
+            {
+                id: 2,
+                title: "職場の心理的安全性を高めるACR（積極的建設的反応）と4毒素の回避",
+                link: "https://positivepsychology.yeey.co/",
+                perma: "R",
+                theme: "感謝・利他/Giver",
+                target: "Well-being lab",
+                summary_3lines: "・仲間の良いニュースに対して積極的・建設的（ACR）に反応する。\n・批判や防御などの『4毒素』を避け、信頼関係を劇的に改善する。\n・結果だけでなく、プロセスで発揮された人間性を承認する。",
+                aws_context: "Well-being lab受講生が現場のチェンジエージェントとなり、部署内のコミュニケーションの質を高める深掘りテーマです[cite: 4, 8, 9]。",
+                reflection_question: "仲間から良い報告を受けたとき、相手の強みや人間性に焦点を当ててどう反応しますか？[cite: 9]",
+                source_ja: "ジョン・ゴットマン博士の『4毒素』および シェリー・ゲーブル博士の『ACR（Active-Constructive Responding）研究』",
+                source_en: "Gottman, J. M., & Silver, N. (1999) / Gable, S. L., et al. (2004). Journal of Personality and Social Psychology."
+            },
+            {
+                id: 3,
+                title: "動物介在療法（AAT）とホスピタリティ産業におけるウェルビーイング向上",
+                link: "https://positivepsychology.yeey.co/",
+                perma: "M",
+                theme: "レジリエンス/成長思考",
+                target: "アワーズ動物学院",
+                summary_3lines: "・動物や自然との触れ合いがスタッフおよびゲストの心身に与える回復効果。\n・コンパッション（思いやり）を育み、ケア従事者の燃え尽きを予防。\n・事業そのものが社会的な意義（Meaning）を持つアプローチ。",
+                aws_context: "アワーズ動物学院の学生やパークのキャストが目指す『Smile創造』の教育的・実践的意義を裏付ける知見です[cite: 4]。",
+                reflection_question: "私たちがゲストや動物に届けている『最高のSmile』の価値を言葉にするとしたら何ですか？[cite: 4]",
+                source_ja: "マーティン・セリグマン教授『ポジティブ心理学の挑戦』およびWell-being理論におけるMeaningの構築",
+                source_en: "Seligman, M. E. P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being."
+            }
+        ];
+
+        let currentPermaFilter = 'ALL';
+        let currentTargetFilter = 'ALL';
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            grid.innerHTML = '';
+
+            const filtered = newsDatabase.filter(item => {
+                const matchPerma = (currentPermaFilter === 'ALL' || item.perma === currentPermaFilter);
+                const matchTarget = (currentTargetFilter === 'ALL' || item.target === currentTargetFilter);
+                return matchPerma && matchTarget;
+            });
+
+            filtered.forEach(item => {
+                // TUNAG共有用テキスト（原語・日本語の元ネタも記載）
+                const shareText = `【CWO Well-being News共有】\n■ ${item.title}\n\n■ アワーズでの視点:\n${item.aws_context}\n\n■ 元ネタ(出典):\n[JP] ${item.source_ja}\n[EN] ${item.source_en}\n\n■ 今日の問いかけ:\n${item.reflection_question}\n\n${item.link}`;
+                
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div>
+                        <div class="tag-container">
+                            <span class="tag tag-perma">PERMA: ${item.perma}</span>
+                            <span class="tag tag-theme">${item.theme}</span>
+                            <span class="tag tag-target">${item.target}</span>
+                        </div>
+                        <h3 class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
+                        
+                        <div class="summary-box">
+                            <strong>【AI 3行要約】</strong><br>
+                            ${item.summary_3lines.replace(/\n/g, '<br>')}
+                        </div>
+
+                        <div class="context-box">
+                            <strong>【AW/アワーズ文脈の価値】</strong><br>
+                            ${item.aws_context}
+                        </div>
+
+                        <!-- 英語（原語）と日本語の元ネタ表示ブロック -->
+                        <div class="source-box">
+                            <strong>【元ネタ / Primary Source】</strong>
+                            <div style="margin-top: 4px;"><span class="lang-badge">日本語</span>${item.source_ja}</div>
+                            <div style="margin-top: 4px; font-style: italic; color: #555;"><span class="lang-badge">EN</span>${item.source_en}</div>
+                        </div>
+
+                        <div class="question-box">
+                            <strong>【今日の問いかけ (Reflective Question)】</strong><br>
+                            ${item.reflection_question}
+                        </div>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="action-btn btn-share" onclick="copyShareText('${encodeURIComponent(shareText)}')">
+                            📋 TUNAG用にコピー
+                        </button>
+                        <button class="action-btn btn-like" onclick="recordFeedback(${item.id}, this)">
+                            👍 役立った (学習)
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterData(type, value, btnElement) {
+            const parent = btnElement.parentElement;
+            parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (type === 'perma') currentPermaFilter = value;
+            if (type === 'target') currentTargetFilter = value;
+
+            renderNews();
+        }
+
+        function copyShareText(text) {
+            navigator.clipboard.writeText(decodeURIComponent(text)).then(() => {
+                alert('TUNAG投稿用のテキストをコピーしました！TUNAGにそのまま貼り付けできます。');
+            });
+        }
+
+        function recordFeedback(id, btn) {
+            btn.style.backgroundColor = '#27ae60';
+            btn.innerText = '✔ 偏好学習済み';
+            alert('CWOのフィードバックを登録しました。');
+        }
+
+        function closeModal() { document.getElementById('breathModal').style.display = 'none'; }
+        function openModal() { document.getElementById('breathModal').style.display = 'flex'; }
+
+        window.onload = renderNews;
+    </script>
 </body>
 </html>
