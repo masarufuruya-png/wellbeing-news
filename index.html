@@ -72,7 +72,6 @@ HTML
         .summary-box { background-color: #f4f6f7; padding: 10px; border-radius: 6px; font-size: 0.82em; margin-bottom: 10px; border-left: 3px solid #7f8c8d; }
         .context-box { background-color: #f0f7f7; border-left: 3px solid var(--primary-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 10px; }
         
-        /* 正しい文献・リンク表示エリア */
         .source-box { background-color: #f8f9fa; border-left: 3px solid #34495e; padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.8em; margin-bottom: 10px; }
         .source-box strong { color: #2c3e50; display: block; margin-bottom: 4px; }
         .source-link { color: #008080; text-decoration: none; font-weight: bold; }
@@ -154,12 +153,12 @@ HTML
             }
         }
 
-        // CWOの講義テキスト（YeeY社資料・CWO School）に準拠した正当な学術文献・書籍リンク集
+        // CWOの受講テキストに基づく学術文献（Google Scholar等への確実な検索直リンク）
         const sampleDatabase = [
             {
                 id: 1,
                 title: "仕事のエンゲージメントと没入感を最大化する『ぷちフロー』の実践法",
-                link: "https://news.google.com/",
+                link: "https://www.google.com/search?q=%E3%83%95%E3%83%AD%E3%83%BC%E4%BD%93%E9%A9%93+%E3%83%9D%E3%82%B8%E3%83%86%E3%82%A3%E3%83%96%E5%BF%83%E7%90%86%E5%AD%A6",
                 perma: "E",
                 theme: "マインドフルネス/フロー",
                 target: "一般社員・キャスト",
@@ -168,28 +167,28 @@ HTML
                 reflection_question: "今日行う業務の中で、工夫を一つ加えて『プチフロー』に挑戦できるタスクは何ですか？[cite: 11]",
                 source_ja: "ミハイ・チクセントミハイ『フロー体験 喜びの心理学』",
                 source_en: "Csikszentmihalyi, M. (1990). Flow: The Psychology of Optimal Experience.",
-                source_url_ja: "https://www.google.co.jp/books/edition/フロー体験_喜びの心理学/z9I4PwAACAAJ",
+                source_url_ja: "https://www.google.co.jp/books/edition/_/z9I4PwAACAAJ",
                 source_url_en: "https://scholar.google.com/scholar?q=Csikszentmihalyi+Flow+The+Psychology+of+Optimal+Experience"
             },
             {
                 id: 2,
                 title: "職場の心理的安全性を高めるACR（積極的建設的反応）と4毒素の回避",
-                link: "https://news.google.com/",
+                link: "https://www.google.com/search?q=ACR+%E7%A9%8D%E6%A5%B5%E7%9A%84%E5%BB%BA%E8%A8%AD%E7%9A%84%E5%8F%8D%E5%BF%9C",
                 perma: "R",
                 theme: "感謝・利他/Giver",
                 target: "Well-being lab",
                 summary_3lines: "・仲間の良いニュースに対して積極的・建設的（ACR）に反応する[cite: 9]。\n・批判や防御などの『4毒素』を避け、信頼関係を劇的に改善する[cite: 9]。\n・結果だけでなく、プロセスで発揮された人間性を承認する[cite: 5]。",
                 aws_context: "Well-being lab受講生が現場のチェンジエージェントとなり、部署内のコミュニケーションの質を高める深掘りテーマです[cite: 4, 8, 9]。",
                 reflection_question: "仲間から良い報告を受けたとき、相手の強みや人間性に焦点を当ててどう反応しますか？[cite: 5, 9]",
-                source_ja: "シェリー・ゲーブル博士『ACR（積極的建設的反応）研究』/ ジョン・ゴットマン博士『4毒素』",
+                source_ja: "シェリー・ゲーブル博士『ACR研究』/ ジョン・ゴットマン博士『4毒素』",
                 source_en: "Gable, S. L., et al. (2004). What do you do when things go right?",
-                source_url_ja: "https://ci.nii.ac.jp/",
+                source_url_ja: "https://www.google.com/search?q=%E3%82%B7%E3%82%A7%E3%83%AA%E3%83%BC%E3%83%BC%E3%82%B2%E3%83%BC%E3%83%96%E3%83%AB+ACR",
                 source_url_en: "https://scholar.google.com/scholar?q=Gable+What+do+you+do+when+things+go+right"
             },
             {
                 id: 3,
                 title: "成長思考（Growth Mindset）とプロセス承認が育むしなやかな強さ",
-                link: "https://news.google.com/",
+                link: "https://www.google.com/search?q=%E3%82%B0%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%89%E3%82%BB%E3%83%83%E3%83%88+%E3%82%AD%E3%83%A3%E3%83%AD%E3%83%AB%E3%83%8F%E3%83%87%E3%83%A5%E3%82%A8%E3%83%83%E3%82%AF",
                 perma: "A",
                 theme: "レジリエンス/成長思考",
                 target: "アワーズ動物学院",
@@ -198,7 +197,7 @@ HTML
                 reflection_question: "最近の失敗や困難から得られた『次につながる最高の学び』は何ですか？[cite: 5]",
                 source_ja: "キャロル・S・デュエック『マインドセット「やればできる！」の研究』",
                 source_en: "Dweck, C. S. (2006). Mindset: The New Psychology of Success.",
-                source_url_ja: "https://www.google.co.jp/books/edition/マインドセット_「やればできる/aJ0xDwAAQBAJ",
+                source_url_ja: "https://www.google.co.jp/books/edition/_/aJ0xDwAAQBAJ",
                 source_url_en: "https://scholar.google.com/scholar?q=Carol+Dweck+Mindset+The+New+Psychology+of+Success"
             }
         ];
@@ -237,16 +236,15 @@ HTML
                             ${item.aws_context}
                         </div>
 
-                        <!-- 修正版: 出典・原著への正確なリンク表示 -->
                         <div class="source-box">
-                            <strong>【元ネタ / Primary Source (論文・原著リンク)】</strong>
+                            <strong>【元ネタ / Primary Source (論文・原著直リンク)】</strong>
                             <div style="margin-top: 4px;">
                                 <span class="lang-badge">日本語文献</span>
-                                <a href="${item.source_url_ja}" target="_blank" class="source-link">${item.source_ja}</a>
+                                <a href="${item.source_url_ja || 'https://books.google.co.jp/'}" target="_blank" class="source-link">${item.source_ja || 'ポジティブ心理学文献'}</a>
                             </div>
                             <div style="margin-top: 4px; font-style: italic;">
                                 <span class="lang-badge">EN (原語論文)</span>
-                                <a href="${item.source_url_en}" target="_blank" class="source-link">${item.source_en}</a>
+                                <a href="${item.source_url_en || 'https://scholar.google.com/'}" target="_blank" class="source-link">${item.source_en || 'Positive Psychology Research'}</a>
                             </div>
                         </div>
 
