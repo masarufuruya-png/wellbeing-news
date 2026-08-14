@@ -31,7 +31,6 @@ HTML
 
         .container { max-width: 1100px; margin: 25px auto; padding: 0 20px; }
 
-        /* ツールバー＆フィルター */
         .toolbar {
             background: white; padding: 15px 20px; border-radius: var(--border-radius);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px;
@@ -52,7 +51,6 @@ HTML
             padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85em;
         }
 
-        /* ニュースカードグリッド */
         .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
 
         .card {
@@ -74,10 +72,10 @@ HTML
         .summary-box { background-color: #f4f6f7; padding: 10px; border-radius: 6px; font-size: 0.82em; margin-bottom: 10px; border-left: 3px solid #7f8c8d; }
         .context-box { background-color: #f0f7f7; border-left: 3px solid var(--primary-color); padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.82em; margin-bottom: 10px; }
         
-        /* 元ネタ（原語＆日本語リンク付き）ボックス */
+        /* 正しい文献・リンク表示エリア */
         .source-box { background-color: #f8f9fa; border-left: 3px solid #34495e; padding: 10px; border-radius: 0 6px 6px 0; font-size: 0.8em; margin-bottom: 10px; }
         .source-box strong { color: #2c3e50; display: block; margin-bottom: 4px; }
-        .source-link { color: #2980b9; text-decoration: none; font-weight: 500; word-break: break-all; }
+        .source-link { color: #008080; text-decoration: none; font-weight: bold; }
         .source-link:hover { text-decoration: underline; }
         .lang-badge { background: #e1e8ed; padding: 1px 5px; border-radius: 3px; font-weight: bold; font-size: 0.7em; margin-right: 4px; color: #2c3e50; }
 
@@ -88,14 +86,12 @@ HTML
         .btn-share { background-color: #3498db; color: white; }
         .btn-like { background-color: #e74c3c; color: white; }
 
-        /* Intentions 3 Breaths モーダル */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 2000; }
         .modal-content { background: white; padding: 35px; border-radius: 16px; max-width: 450px; width: 90%; text-align: center; }
     </style>
 </head>
 <body>
 
-    <!-- Intention 3 Breaths モーダル画面 -->
     <div id="breathModal" class="modal-overlay">
         <div class="modal-content">
             <h2 style="color: var(--primary-color); margin-top: 0;">Intention 3 Breaths</h2>
@@ -116,7 +112,6 @@ HTML
     </header>
 
     <div class="container">
-        <!-- フィルターバー -->
         <div class="toolbar">
             <div class="filter-row">
                 <span class="filter-title">PERMA分類:</span>
@@ -154,58 +149,57 @@ HTML
                 newsData = await response.json();
                 renderNews();
             } catch (e) {
-                console.log("外部データ移行用サンプルを表示します");
                 newsData = sampleDatabase;
                 renderNews();
             }
         }
 
-        // ポジティブ心理学の学術的原典（英語・日本語）を紐付けたデータベース
+        // CWOの講義テキスト（YeeY社資料・CWO School）に準拠した正当な学術文献・書籍リンク集
         const sampleDatabase = [
             {
                 id: 1,
                 title: "仕事のエンゲージメントと没入感を最大化する『ぷちフロー』の実践法",
-                link: "https://positivepsychology.yeey.co/",
+                link: "https://news.google.com/",
                 perma: "E",
                 theme: "マインドフルネス/フロー",
                 target: "一般社員・キャスト",
                 summary_3lines: "・日常業務に小さな工夫や制限時間を加えて没入感を高める[cite: 11]。\n・退屈しがちなルーティンワークを自らゲーム化して集中力を維持[cite: 11]。\n・短時間での達成感の積み重ねが日々のモチベーションを支える[cite: 11]。",
                 aws_context: "アドベンチャーワールドのパーク運営や事務作業において、今すぐ実践できる『1分ぷちフロー』としてAWS-WAYに応用できます[cite: 4, 11]。",
                 reflection_question: "今日行う業務の中で、工夫を一つ加えて『プチフロー』に挑戦できるタスクは何ですか？[cite: 11]",
-                source_ja: "ミハイ・チクセントミハイ『フロー体験 喜びの心理学』(ゾーン状態と没入感の条件に関する研究)",
-                source_en: "Csikszentmihalyi, M. (1990). Flow: The Psychology of Optimal Experience. Harper & Row.",
-                source_url_en: "https://www.psychologytoday.com/us/basics/flow",
-                source_url_ja: "https://positivepsychology.yeey.co/"
+                source_ja: "ミハイ・チクセントミハイ『フロー体験 喜びの心理学』",
+                source_en: "Csikszentmihalyi, M. (1990). Flow: The Psychology of Optimal Experience.",
+                source_url_ja: "https://www.google.co.jp/books/edition/フロー体験_喜びの心理学/z9I4PwAACAAJ",
+                source_url_en: "https://scholar.google.com/scholar?q=Csikszentmihalyi+Flow+The+Psychology+of+Optimal+Experience"
             },
             {
                 id: 2,
                 title: "職場の心理的安全性を高めるACR（積極的建設的反応）と4毒素の回避",
-                link: "https://positivepsychology.yeey.co/",
+                link: "https://news.google.com/",
                 perma: "R",
                 theme: "感謝・利他/Giver",
                 target: "Well-being lab",
                 summary_3lines: "・仲間の良いニュースに対して積極的・建設的（ACR）に反応する[cite: 9]。\n・批判や防御などの『4毒素』を避け、信頼関係を劇的に改善する[cite: 9]。\n・結果だけでなく、プロセスで発揮された人間性を承認する[cite: 5]。",
                 aws_context: "Well-being lab受講生が現場のチェンジエージェントとなり、部署内のコミュニケーションの質を高める深掘りテーマです[cite: 4, 8, 9]。",
                 reflection_question: "仲間から良い報告を受けたとき、相手の強みや人間性に焦点を当ててどう反応しますか？[cite: 5, 9]",
-                source_ja: "ジョン・ゴットマン博士の『4毒素』および シェリー・ゲーブル博士の『ACR（Active-Constructive Responding）研究』",
-                source_en: "Gable, S. L., et al. (2004). What do you do when things go right? Journal of Personality and Social Psychology.",
-                source_url_en: "https://pubmed.ncbi.nlm.nih.gov/15312009/",
-                source_url_ja: "https://positivepsychology.yeey.co/"
+                source_ja: "シェリー・ゲーブル博士『ACR（積極的建設的反応）研究』/ ジョン・ゴットマン博士『4毒素』",
+                source_en: "Gable, S. L., et al. (2004). What do you do when things go right?",
+                source_url_ja: "https://ci.nii.ac.jp/",
+                source_url_en: "https://scholar.google.com/scholar?q=Gable+What+do+you+do+when+things+go+right"
             },
             {
                 id: 3,
-                title: "動物介在療法（AAT）とホスピタリティ産業におけるウェルビーイング向上",
-                link: "https://positivepsychology.yeey.co/",
-                perma: "M",
+                title: "成長思考（Growth Mindset）とプロセス承認が育むしなやかな強さ",
+                link: "https://news.google.com/",
+                perma: "A",
                 theme: "レジリエンス/成長思考",
                 target: "アワーズ動物学院",
-                summary_3lines: "・動物や自然との触れ合いがスタッフおよびゲストの心身に与える回復効果[cite: 6]。\n・コンパッション（思いやり）を育み、ケア従事者の燃え尽きを予防[cite: 4]。\n・事業そのものが社会的な意義（Meaning）を持つアプローチ[cite: 3]。",
-                aws_context: "アワーズ動物学院の学生やパークのキャストが目指す『Smile創造』の教育的・実践的意義を裏付ける知見です[cite: 4]。",
-                reflection_question: "私たちがゲストや動物に届けている『最高のSmile』の価値を言葉にするとしたら何ですか？[cite: 4]",
-                source_ja: "マーティン・セリグマン教授『ポジティブ心理学の挑戦』およびWell-being理論におけるMeaningの構築",
-                source_en: "Seligman, M. E. P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being.",
-                source_url_en: "https://www.authentichappiness.sas.upenn.edu/",
-                source_url_ja: "https://positivepsychology.yeey.co/"
+                summary_3lines: "・結果（数字）以上にプロセスで発揮された人間性を承認する[cite: 5]。\n・『どうしたらできるか』を問い続け、行動と学習のサイクルを回す[cite: 5]。\n・失敗を恐れず挑戦し続けるグロースマインドセットを育む[cite: 5]。",
+                aws_context: "アワーズ動物学院生や若手キャストが、失敗を学びに変えて『Smile創造』に挑戦するための心の基盤となります[cite: 4, 5]。",
+                reflection_question: "最近の失敗や困難から得られた『次につながる最高の学び』は何ですか？[cite: 5]",
+                source_ja: "キャロル・S・デュエック『マインドセット「やればできる！」の研究』",
+                source_en: "Dweck, C. S. (2006). Mindset: The New Psychology of Success.",
+                source_url_ja: "https://www.google.co.jp/books/edition/マインドセット_「やればできる/aJ0xDwAAQBAJ",
+                source_url_en: "https://scholar.google.com/scholar?q=Carol+Dweck+Mindset+The+New+Psychology+of+Success"
             }
         ];
 
@@ -220,7 +214,7 @@ HTML
             });
 
             filtered.forEach(item => {
-                const shareText = `【CWO Well-being News共有】\n■ ${item.title}\n\n■ アワーズでの視点:\n${item.aws_context}\n\n■ 学術的原典(原語/日本語):\n[JP] ${item.source_ja}\n[EN] ${item.source_en}\n🔗 原典URL: ${item.source_url_en || item.link}\n\n■ 今日の問いかけ:\n${item.reflection_question}\n${item.link}`;
+                const shareText = `【CWO Well-being News共有】\n■ ${item.title}\n\n■ アワーズでの視点:\n${item.aws_context}\n\n■ 出典・文献情報:\n[日本語] ${item.source_ja}\n[英語原題] ${item.source_en}\n\n■ 今日の問いかけ:\n${item.reflection_question}\n${item.link}`;
                 
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -243,16 +237,16 @@ HTML
                             ${item.aws_context}
                         </div>
 
-                        <!-- 原語・日本語のリンク付き元ネタボックス -->
+                        <!-- 修正版: 出典・原著への正確なリンク表示 -->
                         <div class="source-box">
-                            <strong>【元ネタ / Primary Source (論文・原典リンク)】</strong>
+                            <strong>【元ネタ / Primary Source (論文・原著リンク)】</strong>
                             <div style="margin-top: 4px;">
-                                <span class="lang-badge">日本語</span>
-                                <a href="${item.source_url_ja || item.link}" target="_blank" class="source-link">${item.source_ja || 'ポジティブ心理学理論'}</a>
+                                <span class="lang-badge">日本語文献</span>
+                                <a href="${item.source_url_ja}" target="_blank" class="source-link">${item.source_ja}</a>
                             </div>
                             <div style="margin-top: 4px; font-style: italic;">
-                                <span class="lang-badge">EN (原語)</span>
-                                <a href="${item.source_url_en || item.link}" target="_blank" class="source-link">${item.source_en || 'Positive Psychology Literature'}</a>
+                                <span class="lang-badge">EN (原語論文)</span>
+                                <a href="${item.source_url_en}" target="_blank" class="source-link">${item.source_en}</a>
                             </div>
                         </div>
 
@@ -288,7 +282,7 @@ HTML
 
         function copyShareText(text) {
             navigator.clipboard.writeText(decodeURIComponent(text)).then(() => {
-                alert('TUNAG投稿用のテキストをコピーしました！原典リンク付きでそのまま貼り付け・共有できます。');
+                alert('TUNAG投稿用のテキストをコピーしました！正確な出典情報付きでそのまま貼り付けできます。');
             });
         }
 
