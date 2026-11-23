@@ -23,7 +23,7 @@ def call_gemini(api_key, model, prompt):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "temperature": 0.7
+            "temperature": 0.75
         }
     }
     req = urllib.request.Request(
@@ -32,7 +32,7 @@ def call_gemini(api_key, model, prompt):
         headers={"Content-Type": "application/json"},
         method="POST"
     )
-    with urllib.request.urlopen(req, timeout=60) as res:
+    with urllib.request.urlopen(req, timeout=90) as res:
         result = json.loads(res.read().decode("utf-8"))
         return result["candidates"][0]["content"]["parts"][0]["text"]
 
@@ -44,13 +44,21 @@ def main():
 
     prompt = f"""
     今日は {today}（{current_year}年）です。
-    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を3本作成してください。
+    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を、**PERMAの5分類（P, E, R, M, A）それぞれについて3本ずつ、合計15本**作成してください。
 
-    【重要：情報の鮮度ルール】
-    - **必ず {current_year - 1}年〜{current_year}年 に発表された新しい研究・調査レポート・トレンド**をテーマにすること（1990〜2010年代の古い古典論文は使わないこと）。
-    - Google Scholar等で検索可能な実在の新しい研究テーマ・著者/機関名・発表年（{current_year - 1}または{current_year}）を記載し、`source_url` にはその論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）を生成すること（リンク切れを防ぐため）。
-    - 3本の記事はPERMA分類（P, E, R, M, A）とターゲット（一般社員・キャスト / Well-being lab / アワーズ動物学院）を重複しないように割り振ること。
-    - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
+    【重要ルール】
+    1. **件数と内訳:**
+       - `perma: "P"`（ポジティブ感情）の記事を3本
+       - `perma: "E"`（エンゲイジメント・没入）の記事を3本
+       - `perma: "R"`（人間関係・つながり）の記事を3本
+       - `perma: "M"`（意味・意義）の記事を3本
+       - `perma: "A"`（達成・やりがい）の記事を3本
+       各PERMAの3本は、それぞれターゲット（`一般社員・キャスト`、`Well-being lab`、`アワーズ動物学院`）を1本ずつ割り振ること。
+    2. **情報の鮮度:**
+       - 必ず **{current_year - 1}年〜{current_year}年** に発表された新しい学術研究・調査レポート・トレンドをテーマにすること（古い古典論文は使わないこと）。
+       - `source_url` は、その論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）にすること。
+    3. **アワーズ文脈:**
+       - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
 
     【出力形式】必ず以下のJSON形式のみを出力してください。
     {{
@@ -84,7 +92,7 @@ def main():
             parsed = json.loads(text)
             with open("news.json", "w", encoding="utf-8") as f:
                 json.dump(parsed, f, ensure_ascii=False, indent=2)
-            print(f"Success with {model}!")
+            print(f"Success with {model}! Total articles: {len(parsed.get('articles', []))}")
             return
         except Exception as e:
             print(f"Failed with {model}: {e}")
