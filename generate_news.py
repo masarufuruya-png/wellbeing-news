@@ -1,7 +1,28 @@
 import os
 import json
+import time
 import datetime
 import urllib.request
+import urllib.error
+
+def call_gemini(api_key, model, prompt):
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "temperature": 0.7
+        }
+    }
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=90) as res:
+        result = json.loads(res.read().decode("utf-8"))
+        return result["candidates"][0]["content"]["parts"][0]["text"]
 
 def main():
     api_key = os.environ["GEMINI_API_KEY"]
@@ -11,7 +32,7 @@ def main():
     今日は {today} です。
     株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けの社内プラットフォーム『CWO Well-being Morning News』に掲載する最新記事を3本作成してください。
 
-    【出力形式】必ず以下のJSON形式のみを出力してください（マークダウンの```などは不要）。
+    【出力形式】必ず以下のJSON形式のみを出力してください。
     {{
       "date": "{today}",
       "articles": [
@@ -36,31 +57,26 @@ def main():
     - 「AW/アワーズ文脈の価値」ではパーク運営・動物飼育・AWS-WAY・Smile創造に絡めること。
     """
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={api_key}"
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "temperature": 0.7,
-            "thinkingConfig": {
-                "thinkingBudget": 0
-            }
-        }
-    }
+    # 混雑(503)に強い複数モデル＆自動リトライ設定
+    models = ["gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-2.5-flash-lite"]
+    last_error = None
 
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-        method="POST"
-    )
+    for attempt in range(6):
+        model = models[attempt % len(models)]
+        try:
+            print(f"Attempt {attempt + 1}: trying {model}...")
+            text = call_gemini(api_key, model, prompt)
+            parsed = json.loads(text)
+            with open("news.json", "w", encoding="utf-8") as f:
+                json.dump(parsed, f, ensure_ascii=False, indent=2)
+            print(f"Success with {model}!")
+            return
+        except Exception as e:
+            print(f"Failed with {model}: {e}")
+            last_error = e
+            time.sleep(5)
 
-    with urllib.request.urlopen(req, timeout=120) as res:
-        result = json.loads(res.read().decode("utf-8"))
-        text = result["candidates"][0]["content"]["parts"][0]["text"]
-        parsed = json.loads(text)
-        with open("news.json", "w", encoding="utf-8") as f:
-            json.dump(parsed, f, ensure_ascii=False, indent=2)
+    raise last_error
 
 if __name__ == "__main__":
     main()
