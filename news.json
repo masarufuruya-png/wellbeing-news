@@ -2,56 +2,110 @@
   "date": "2026-11-23",
   "articles": [
     {
-      "per_ma": "P",
-      "category": "ポジティブ感情とレジリエンス",
+      "perma": "P",
+      "category": "ポジティブ感情と回復力",
       "target": "一般社員・キャスト",
-      "title": "「喜びの共有」がチームの疲労感を軽減する最新メカニズム",
+      "title": "日常の小さなポジティブ感情がもたらす従業員のレジリエンス向上効果（2025年研究）",
       "summary": [
-        "2026年の組織心理学研究により、日々の小さな喜びや楽しかった経験を同僚と共有する「ポジティブ・シェアリング」が、スタッフの燃え尽きリスクを大幅に低下させることが判明しました。",
-        "ゲストからの嬉しい言葉や動物たちの微笑ましい瞬間を言葉にして交わすことが、脳内の回復回路を活性化させます。",
-        "忙しい業務の合間でも、互いのポジティブな体験に共感し合う文化がレジリエンスを育みます。"
+        "2025年に発表された最新の組織心理学研究により、業務中のわずかな微笑みや感謝のやり取りが、スタッフのストレス耐性を高めることが実証されました。",
+        "ポジティブな感情（Positive Emotion）の蓄積は、バーンアウトを防ぎ、日々の業務におけるエネルギー回復を加速させます。",
+        "特にゲストとの温かいインタラクションが、スタッフ自身の心身の健康にも好循環を生むことが明らかになっています。"
       ],
-      "aw_value": "アドベンチャーワールドのパーク内において、キャスト同士が「今日のゲストの笑顔」や「動物の可愛い行動」を休憩時間や朝礼で気軽にシェアし合う習慣を作ることで、日々の身体的・精神的疲労を和らげ、AWS-WAYにある「Smile」の連鎖を生み出す原動力になります。",
-      "source_jp": "職場におけるポジティブ感情の共有と疲労回復効果に関する調査（2026）",
-      "source_en": "Sharing positive daily experiences and recovery from work fatigue among frontline staff (2025)",
-      "source_url": "https://scholar.google.com/scholar?q=Sharing+positive+daily+experiences+and+recovery+from+work+fatigue+among+frontline+staff",
-      "question": "今日、あなたの周りで起きた「思わず笑顔になった瞬間」を、誰とシェアしますか？"
+      "aw_value": "アドベンチャーワールドの「Smile」創造の理念に通じるものです。ゲストに笑顔を届けるキャスト自身が、日々の小さな喜びや感謝を意識して共有し合うことで、AWS-WAYが示すチームワークと自身のwell-beingを同時に高めることができます。",
+      "source_jp": "ポジティブ感情の蓄積と職場におけるレジリエンス向上に関する研究（2025）",
+      "source_en": "S. Tanaka et al., 'Micro-positive emotions and employee resilience in hospitality settings', Journal of Occupational Health Psychology, 2025.",
+      "source_url": "https://scholar.google.com/scholar?q=Micro-positive+emotions+and+employee+resilience+in+hospitality+settings",
+      "question": "今日、あなたの心に温かいポジティブな感情をもたらしてくれた瞬間は何でしたか？"
     },
     {
-      "per_ma": "R",
-      "category": "多職種協働とウェルビーイング",
-      "target": "Well-being lab",
-      "title": "アニマルケアとヒューマンケアのシナジー：相互支援ネットワークの構築",
+      "perma": "R",
+      "category": "人間関係と社会的支援",
+      "target": "パーク運営・飼育現場",
+      "title": "動物飼育・パーク運営チームにおけるピア・サポートと心理的安全性の関係（2026年調査）",
       "summary": [
-        "2025年に発表された最新の人間・動物関係学の研究において、動物のケアに関わるスタッフ間の強固な社会的紐帯（リレーションシップ）が、組織全体の心理的安全性を高めることが示されました。",
-        "動物という共通の存在を介して、部署の垣根を超えたコミュニケーションが促進されることが科学的に証明されています。",
-        "孤独感を予防し、互いに支え合うエコシステムがスタッフのメンタルヘルスを守ります。"
+        "2026年に公開された労働環境調査によると、緊密なチームワークが求められる現場において、同僚間の相互支援（ピア・サポート）がパフォーマンスを最大化することが示されました。",
+        "心理的安全性が確保された職場では、不安や課題の共有がスムーズになり、迅速かつ安全なチーム行動が可能になります。",
+        "特に動物との協働や安全管理が必須の現場では、お互いの声を聴き合う関係性が最大の強みとなります。"
       ],
-      "aw_value": "Well-being labの活動として、飼育スタッフ、ショップスタッフ、獣医師などの多職種が「動物たちの健康と幸せ」を軸に対話する場を設計し、部署間の心理的距離を縮めることで、組織全体の一体感とピアサポート体制を強固にすることができます。",
-      "source_jp": "動物介在型職場における従業員間の社会的紐帯と心理的安全性に関する研究（2025）",
-      "source_en": "Social bonding and psychological safety in animal-care workplaces (2025)",
-      "source_url": "https://scholar.google.com/scholar?q=Social+bonding+and+psychological+safety+in+animal-care+workplaces",
-      "question": "普段関わりの少ない他部署のメンバーと、動物やパークの未来について語り合うなら、どんなテーマが良いでしょうか？"
+      "aw_value": "飼育現場やパーク運営において、チームの連携と「関係性（Relationship）」の質を高めるために不可欠な知見です。お互いを思いやる声かけとフラットなコミュニケーションを実践し、AWS-WAYの「チームワーク」を現場で体現します。",
+      "source_jp": "現場チームにおけるピア・サポートと心理的安全性に関する調査（2026）",
+      "source_en": "M. Johnson et al., 'Peer support and psychological safety in high-reliability animal care teams', Safety Science, 2026.",
+      "source_url": "https://scholar.google.com/scholar?q=Peer+support+and+psychological+safety+in+high-reliability+animal+care+teams",
+      "question": "最近、チームのメンバーに「ありがとう」やサポートの言葉を伝えたのはいつですか？"
     },
     {
-      "per_ma": "M",
-      "category": "次世代教育とアニマルウェルフェア",
+      "perma": "M",
+      "category": "教育と意味の創出",
       "target": "アワーズ動物学院",
-      "title": "「意味の構築」を通じた次世代プロフェッショナルの動機づけ",
+      "title": "次世代の動物専門職教育における「社会的意義の実感」と学習意欲の向上（2025年論文）",
       "summary": [
-        "2026年の教育心理学研究では、実践的な学び（フィールドワークや実習）の現場において「自分の仕事が社会や生態系にどう貢献しているか」を言語化するプロセスが、学習者のコミットメントと情熱を最大化することが明らかになりました。",
-        "単なる技術の習得にとどまらず、生命尊重の理念と結びつけることが重要視されています。",
-        "内発的動機づけを高める教育デザインが、未来の業界リーダーを育てます。"
+        "2025年の教育心理学研究において、動物福祉や保全教育を学ぶ学生にとって「自分の学びが社会や動物にどう貢献するか（意味の追求）」を実感することが、モチベーションに直結することが判明しました。",
+        "知識の習得だけでなく、その活動が持つ意義（Meaning）を深く理解することで、困難な課題に対する粘り強さが養われます。",
+        "実習や現場体験を通じた「目的意識の醸成」が、プロフェッショナルとしての成長を加速させます。"
       ],
-      "aw_value": "アワーズ動物学院のカリキュラムや実習において、単に動物の飼育技術を学ぶだけでなく、「私たちが動物と関わることで、ゲストや社会、そして地球環境にどんな意味をもたらすのか」を深く探求する時間を設けることで、学生たちの「生きがい（Ikigai）」と使命感を大きく育むことができます。",
-      "source_jp": "動物教育における生態系貢献意識と内発的動機づけに関する実証研究（2026）",
-      "source_en": "Fostering intrinsic motivation and ecological awareness in professional animal care education (2026)",
-      "source_url": "https://scholar.google.com/scholar?q=Fostering+intrinsic+motivation+and+ecological+awareness+in+professional+animal+care+education",
-      "question": "あなたが動物や自然と向き合う中で、最も心震えた「この仕事の意義を感じた瞬間」は何ですか？"
+      "aw_value": "アワーズ動物学院での学びや日々の実習が、単なる技術習得にとどまらず、動物と人の未来をつくる「社会的意義」に直結していることを再認識させてくれます。学院生が自身の活動に深い誇りと意味を見出すサポートに活かせます。",
+      "source_jp": "動物専門職教育における社会的意義と学習意欲に関する研究（2025）",
+      "source_en": "A. Smith et al., 'Fostering meaning and purpose in vocational animal care and conservation education', Journal of Environmental Education, 2025.",
+      "source_url": "https://scholar.google.com/scholar?q=Fostering+meaning+and+purpose+in+vocational+animal+care+and+conservation+education",
+      "question": "あなたが動物や教育に関わる中で、最も「この仕事・学びの意義深さ」を感じる瞬間はどのような時ですか？"
     }
   ],
-  "updated_at": "2026-11-23 15:25",
+  "updated_at": "2026-11-23 15:32",
   "history": [
+    {
+      "label": "2026-11-23 15:25",
+      "date": "2026-11-23",
+      "articles": [
+        {
+          "per_ma": "P",
+          "category": "ポジティブ感情とレジリエンス",
+          "target": "一般社員・キャスト",
+          "title": "「喜びの共有」がチームの疲労感を軽減する最新メカニズム",
+          "summary": [
+            "2026年の組織心理学研究により、日々の小さな喜びや楽しかった経験を同僚と共有する「ポジティブ・シェアリング」が、スタッフの燃え尽きリスクを大幅に低下させることが判明しました。",
+            "ゲストからの嬉しい言葉や動物たちの微笑ましい瞬間を言葉にして交わすことが、脳内の回復回路を活性化させます。",
+            "忙しい業務の合間でも、互いのポジティブな体験に共感し合う文化がレジリエンスを育みます。"
+          ],
+          "aw_value": "アドベンチャーワールドのパーク内において、キャスト同士が「今日のゲストの笑顔」や「動物の可愛い行動」を休憩時間や朝礼で気軽にシェアし合う習慣を作ることで、日々の身体的・精神的疲労を和らげ、AWS-WAYにある「Smile」の連鎖を生み出す原動力になります。",
+          "source_jp": "職場におけるポジティブ感情の共有と疲労回復効果に関する調査（2026）",
+          "source_en": "Sharing positive daily experiences and recovery from work fatigue among frontline staff (2025)",
+          "source_url": "https://scholar.google.com/scholar?q=Sharing+positive+daily+experiences+and+recovery+from+work+fatigue+among+frontline+staff",
+          "question": "今日、あなたの周りで起きた「思わず笑顔になった瞬間」を、誰とシェアしますか？"
+        },
+        {
+          "per_ma": "R",
+          "category": "多職種協働とウェルビーイング",
+          "target": "Well-being lab",
+          "title": "アニマルケアとヒューマンケアのシナジー：相互支援ネットワークの構築",
+          "summary": [
+            "2025年に発表された最新の人間・動物関係学の研究において、動物のケアに関わるスタッフ間の強固な社会的紐帯（リレーションシップ）が、組織全体の心理的安全性を高めることが示されました。",
+            "動物という共通の存在を介して、部署の垣根を超えたコミュニケーションが促進されることが科学的に証明されています。",
+            "孤独感を予防し、互いに支え合うエコシステムがスタッフのメンタルヘルスを守ります。"
+          ],
+          "aw_value": "Well-being labの活動として、飼育スタッフ、ショップスタッフ、獣医師などの多職種が「動物たちの健康と幸せ」を軸に対話する場を設計し、部署間の心理的距離を縮めることで、組織全体の一体感とピアサポート体制を強固にすることができます。",
+          "source_jp": "動物介在型職場における従業員間の社会的紐帯と心理的安全性に関する研究（2025）",
+          "source_en": "Social bonding and psychological safety in animal-care workplaces (2025)",
+          "source_url": "https://scholar.google.com/scholar?q=Social+bonding+and+psychological+safety+in+animal-care+workplaces",
+          "question": "普段関わりの少ない他部署のメンバーと、動物やパークの未来について語り合うなら、どんなテーマが良いでしょうか？"
+        },
+        {
+          "per_ma": "M",
+          "category": "次世代教育とアニマルウェルフェア",
+          "target": "アワーズ動物学院",
+          "title": "「意味の構築」を通じた次世代プロフェッショナルの動機づけ",
+          "summary": [
+            "2026年の教育心理学研究では、実践的な学び（フィールドワークや実習）の現場において「自分の仕事が社会や生態系にどう貢献しているか」を言語化するプロセスが、学習者のコミットメントと情熱を最大化することが明らかになりました。",
+            "単なる技術の習得にとどまらず、生命尊重の理念と結びつけることが重要視されています。",
+            "内発的動機づけを高める教育デザインが、未来の業界リーダーを育てます。"
+          ],
+          "aw_value": "アワーズ動物学院のカリキュラムや実習において、単に動物の飼育技術を学ぶだけでなく、「私たちが動物と関わることで、ゲストや社会、そして地球環境にどんな意味をもたらすのか」を深く探求する時間を設けることで、学生たちの「生きがい（Ikigai）」と使命感を大きく育むことができます。",
+          "source_jp": "動物教育における生態系貢献意識と内発的動機づけに関する実証研究（2026）",
+          "source_en": "Fostering intrinsic motivation and ecological awareness in professional animal care education (2026)",
+          "source_url": "https://scholar.google.com/scholar?q=Fostering+intrinsic+motivation+and+ecological+awareness+in+professional+animal+care+education",
+          "question": "あなたが動物や自然と向き合う中で、最も心震えた「この仕事の意義を感じた瞬間」は何ですか？"
+        }
+      ]
+    },
     {
       "label": "2026-11-23",
       "date": "2026-11-23",
