@@ -52,21 +52,23 @@ def main():
                 history = old_data.get("history", [])
                 if old_data.get("articles"):
                     history.insert(0, {
-                        "label": old_data.get("updated_at") or old_data.get("date") or "過去の記事",
+                        "label": old_data.get("updated_at") or old_data.get("date") or "過去の配信",
                         "date": old_data.get("date", ""),
-                        "articles": old_data["articles"]
+                        "articles": old_data["articles"][:3]
                     })
         except Exception:
             pass
 
     prompt = f"""
     今日は {today}（{current_year}年）です。
-    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を **3本** 作成してください。
+    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を **必ず3本だけ** 作成してください。
 
     【重要ルール】
+    - **記事数は必ず3本のみ**とすること。
     - **必ず {current_year - 1}年〜{current_year}年 に発表された新しい学術研究・調査レポート・トレンド**をテーマにすること（古い古典論文は使わないこと）。
     - `source_url` は、その論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）にすること。
-    - 3本の記事はPERMA分類（P, E, R, M, A）とターゲット（一般社員・キャスト / Well-being lab / アワーズ動物学院）が重複しないようにバランスよく割り振ること。
+    - 3本の記事はPERMA分類（P, E, R, M, A）が重複しないようにバランスよく割り振ること。
+    - ターゲット（`target`）は「一般社員・キャスト」「パーク運営・飼育現場」「アワーズ動物学院」のいずれかを設定すること（※過去に存在した「Well-being lab」という名称は現在実施していないため、本文・ターゲットともに一切使用しないこと）。
     - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
 
     【出力形式】必ず以下のJSON形式のみを出力してください。
@@ -76,7 +78,7 @@ def main():
         {{
           "perma": "P, E, R, M, A のいずれか1文字",
           "category": "例: 最新組織心理学 / アニマルウェルフェア",
-          "target": "一般社員・キャスト / Well-being lab / アワーズ動物学院 のいずれか",
+          "target": "一般社員・キャスト / パーク運営・飼育現場 / アワーズ動物学院 のいずれか",
           "title": "記事のタイトル",
           "summary": ["要約1", "要約2", "要約3"],
           "aw_value": "アドベンチャーワールド・アワーズの現場やAWS-WAYにどう活かせるかの解説",
@@ -98,6 +100,7 @@ def main():
             print(f"Attempt {attempt + 1}: trying {model}...")
             text = call_gemini(api_key, model, prompt)
             parsed = json.loads(text)
+            parsed["articles"] = parsed.get("articles", [])[:3]
             parsed["updated_at"] = timestamp
             parsed["history"] = history[:30]
             with open("news.json", "w", encoding="utf-8") as f:
