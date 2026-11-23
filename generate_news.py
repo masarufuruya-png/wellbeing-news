@@ -25,7 +25,7 @@ def main():
     print("Starting news generation...")
     client = genai.Client(
         api_key=os.environ["GEMINI_API_KEY"],
-        http_options=types.HttpOptions(timeout=30.0)
+        http_options=types.HttpOptions(timeout=120.0)
     )
     today = datetime.date.today().strftime("%Y-%m-%d")
 
@@ -43,11 +43,12 @@ def main():
     response = client.models.generate_content(
         model="gemini-3.8-flash",
         contents=prompt,
-        config={
-            "response_mime_type": "application/json",
-            "response_schema": DailyNewsList,
-            "temperature": 0.7,
-        },
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            response_schema=DailyNewsList,
+            temperature=0.7,
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
+        ),
     )
 
     with open("news.json", "w", encoding="utf-8") as f:
@@ -56,3 +57,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
