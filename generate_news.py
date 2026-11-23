@@ -3,7 +3,19 @@ import json
 import time
 import datetime
 import urllib.request
-import urllib.error
+
+def get_available_models(api_key):
+    url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
+    req = urllib.request.Request(url, method="GET")
+    with urllib.request.urlopen(req, timeout=30) as res:
+        data = json.loads(res.read().decode("utf-8"))
+        models = []
+        for m in data.get("models", []):
+            name = m.get("name", "").replace("models/", "")
+            methods = m.get("supportedGenerationMethods", [])
+            if "generateContent" in methods and "flash" in name and "tts" not in name and "image" not in name:
+                models.append(name)
+        return models
 
 def call_gemini(api_key, model, prompt):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
@@ -57,11 +69,11 @@ def main():
     - 「AW/アワーズ文脈の価値」ではパーク運営・動物飼育・AWS-WAY・Smile創造に絡めること。
     """
 
-    # 混雑(503)に強い複数モデル＆自動リトライ設定
-    models = ["gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-2.5-flash-lite"]
+    models = get_available_models(api_key)
+    print("Available models:", models)
     last_error = None
 
-    for attempt in range(6):
+    for attempt in range(len(models) * 2):
         model = models[attempt % len(models)]
         try:
             print(f"Attempt {attempt + 1}: trying {model}...")
