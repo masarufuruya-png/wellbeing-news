@@ -27,17 +27,52 @@
       color: #fff;
       padding: 28px 20px;
       text-align: center;
+      position: relative;
     }
     header h1 { margin: 0 0 6px; font-size: 1.75rem; letter-spacing: 0.02em; }
     header p { margin: 0; opacity: 0.92; font-size: 0.95rem; }
+    .header-controls {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
     .date-badge {
-      display: inline-block;
-      margin-top: 10px;
       background: rgba(255,255,255,0.18);
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 999px;
       font-size: 0.82rem;
     }
+    .update-btn {
+      background: #f59e0b;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.1s, background 0.15s;
+    }
+    .update-btn:hover { background: #d97706; transform: translateY(-1px); }
+    .reload-btn {
+      background: rgba(255,255,255,0.22);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .reload-btn:hover { background: rgba(255,255,255,0.32); }
     .container { max-width: 1100px; margin: 20px auto 48px; padding: 0 16px; }
     .filter-panel {
       background: var(--card);
@@ -77,6 +112,12 @@
       font-weight: 700;
       font-size: 0.82rem;
       cursor: pointer;
+    }
+    .count-info {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 600;
     }
     .grid {
       display: grid;
@@ -142,7 +183,7 @@
       background: #fff;
       padding: 28px;
       border-radius: 16px;
-      max-width: 380px;
+      max-width: 400px;
       text-align: center;
     }
   </style>
@@ -151,7 +192,11 @@
   <header>
     <h1>CWO Well-being Morning News</h1>
     <p>アワーズ＆アドベンチャーワールドのSmileを育む情報共有プラットフォーム</p>
-    <div class="date-badge" id="newsDate">読み込み中...</div>
+    <div class="header-controls">
+      <div class="date-badge" id="newsDate">読み込み中...</div>
+      <button class="update-btn" onclick="openUpdateGuide()">🔄 記事を最新に更新</button>
+      <button class="reload-btn" onclick="loadNews()">↻ 再読み込み</button>
+    </div>
   </header>
 
   <div class="container">
@@ -175,14 +220,32 @@
       </div>
     </div>
 
+    <div class="count-info" id="countInfo"></div>
     <div class="grid" id="newsGrid"></div>
   </div>
 
+  <!-- 3 Breaths モーダル -->
   <div class="modal" id="breathModal" onclick="closeBreath()">
     <div class="modal-inner" onclick="event.stopPropagation()">
       <h3>🧘 3 Breaths リセット</h3>
       <p>4秒かけて鼻から吸い、6秒かけてゆっくり口から吐き出しましょう（3回）。<br>今この瞬間のSmileを整えます。</p>
       <button class="btn btn-primary" onclick="closeBreath()">完了して戻る</button>
+    </div>
+  </div>
+
+  <!-- 手動更新ガイドモーダル -->
+  <div class="modal" id="updateModal" onclick="closeUpdateGuide()">
+    <div class="modal-inner" onclick="event.stopPropagation()">
+      <h3>🔄 記事を最新の15本に更新</h3>
+      <p style="font-size:0.9rem; text-align:left; line-height:1.6;">
+        1. 下のボタンから更新実行画面を開きます。<br>
+        2. 右上の <strong>「Run workflow」</strong> ＞ 緑色の <strong>「Run workflow」</strong> を押します。<br>
+        3. 約30秒後にこの画面へ戻り <strong>「↻ 再読み込み」</strong> を押すと最新記事に切り替わります！
+      </p>
+      <div style="display:flex; gap:8px; margin-top:16px;">
+        <a class="btn btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;" href="https://github.com/masarufuruya-png/wellbeing-news/actions/workflows/daily_news.yml" target="_blank" rel="noopener">更新実行画面を開く ↗</a>
+        <button class="btn" onclick="closeUpdateGuide()">閉じる</button>
+      </div>
     </div>
   </div>
 
@@ -193,6 +256,7 @@
 
     async function loadNews() {
       try {
+        document.getElementById("newsDate").textContent = "読み込み中...";
         const res = await fetch("./news.json?t=" + Date.now());
         const data = await res.json();
         document.getElementById("newsDate").textContent = "配信日: " + (data.date || "最新");
@@ -211,12 +275,16 @@
         return matchP && matchT;
       });
 
+      document.getElementById("countInfo").textContent = `表示中の記事: ${filtered.length} 件（全 ${allArticles.length} 件）`;
+
       if (filtered.length === 0) {
         grid.innerHTML = "<p>該当する記事がありません。「すべて」を選択してください。</p>";
         return;
       }
 
-      grid.innerHTML = filtered.map((a, idx) => `
+      grid.innerHTML = filtered.map((a) => {
+        const originalIdx = allArticles.indexOf(a);
+        return `
         <article class="card">
           <div class="badges">
             <span class="badge b-perma">PERMA: ${a.perma}</span>
@@ -242,11 +310,11 @@
             <div>${a.question}</div>
           </div>
           <div class="actions">
-            <button class="btn" onclick="copyTunag(${idx})">📋 TUNAG用にコピー</button>
+            <button class="btn" onclick="copyTunag(${originalIdx})">📋 TUNAG用にコピー</button>
             <button class="btn btn-primary" onclick="this.textContent='👍 学習済み！'">👍 役立った</button>
           </div>
         </article>
-      `).join("");
+      `}).join("");
     }
 
     function copyTunag(idx) {
@@ -276,6 +344,8 @@
 
     function openBreath() { document.getElementById("breathModal").style.display = "flex"; }
     function closeBreath() { document.getElementById("breathModal").style.display = "none"; }
+    function openUpdateGuide() { document.getElementById("updateModal").style.display = "flex"; }
+    function closeUpdateGuide() { document.getElementById("updateModal").style.display = "none"; }
 
     loadNews();
   </script>
