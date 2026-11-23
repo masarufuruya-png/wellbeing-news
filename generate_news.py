@@ -22,7 +22,6 @@ class DailyNewsList(BaseModel):
     articles: list[NewsItem]
 
 def main():
-    print("Starting news generation...")
     client = genai.Client(
         api_key=os.environ["GEMINI_API_KEY"],
         http_options=types.HttpOptions(timeout=120.0)
@@ -41,20 +40,17 @@ def main():
     """
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
             response_schema=DailyNewsList,
             temperature=0.7,
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
         ),
     )
 
     with open("news.json", "w", encoding="utf-8") as f:
         f.write(response.text)
-    print("Successfully saved news.json!")
 
 if __name__ == "__main__":
     main()
-    
