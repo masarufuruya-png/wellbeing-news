@@ -23,7 +23,7 @@ def call_gemini(api_key, model, prompt):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "temperature": 0.75
+            "temperature": 0.85
         }
     }
     req = urllib.request.Request(
@@ -40,25 +40,34 @@ def main():
     api_key = os.environ["GEMINI_API_KEY"]
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
     today = now.strftime("%Y-%m-%d")
+    timestamp = now.strftime("%Y-%m-%d %H:%M")
     current_year = now.year
+
+    # 既存のnews.jsonがあれば履歴として読み込む
+    history = []
+    if os.path.exists("news.json"):
+        try:
+            with open("news.json", "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                history = old_data.get("history", [])
+                if old_data.get("articles"):
+                    history.insert(0, {
+                        "label": old_data.get("updated_at") or old_data.get("date") or "過去の記事",
+                        "date": old_data.get("date", ""),
+                        "articles": old_data["articles"]
+                    })
+        except Exception:
+            pass
 
     prompt = f"""
     今日は {today}（{current_year}年）です。
-    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を、**PERMAの5分類（P, E, R, M, A）それぞれについて3本ずつ、合計15本**作成してください。
+    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を **3本** 作成してください。
 
     【重要ルール】
-    1. **件数と内訳:**
-       - `perma: "P"`（ポジティブ感情）の記事を3本
-       - `perma: "E"`（エンゲイジメント・没入）の記事を3本
-       - `perma: "R"`（人間関係・つながり）の記事を3本
-       - `perma: "M"`（意味・意義）の記事を3本
-       - `perma: "A"`（達成・やりがい）の記事を3本
-       各PERMAの3本は、それぞれターゲット（`一般社員・キャスト`、`Well-being lab`、`アワーズ動物学院`）を1本ずつ割り振ること。
-    2. **情報の鮮度:**
-       - 必ず **{current_year - 1}年〜{current_year}年** に発表された新しい学術研究・調査レポート・トレンドをテーマにすること（古い古典論文は使わないこと）。
-       - `source_url` は、その論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）にすること。
-    3. **アワーズ文脈:**
-       - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
+    - **必ず {current_year - 1}年〜{current_year}年 に発表された新しい学術研究・調査レポート・トレンド**をテーマにすること（古い古典論文は使わないこと）。
+    - `source_url` は、その論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）にすること。
+    - 3本の記事はPERMA分類（P, E, R, M, A）とターゲット（一般社員・キャスト / Well-being lab / アワーズ動物学院）が重複しないようにバランスよく割り振ること。
+    - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
 
     【出力形式】必ず以下のJSON形式のみを出力してください。
     {{
@@ -81,7 +90,6 @@ def main():
     """
 
     models = get_available_models(api_key)
-    print("Available models:", models)
     last_error = None
 
     for attempt in range(len(models) * 2):
@@ -90,9 +98,11 @@ def main():
             print(f"Attempt {attempt + 1}: trying {model}...")
             text = call_gemini(api_key, model, prompt)
             parsed = json.loads(text)
+            parsed["updated_at"] = timestamp
+            parsed["history"] = history[:30]
             with open("news.json", "w", encoding="utf-8") as f:
                 json.dump(parsed, f, ensure_ascii=False, indent=2)
-            print(f"Success with {model}! Total articles: {len(parsed.get('articles', []))}")
+            print(f"Success with {model}!")
             return
         except Exception as e:
             print(f"Failed with {model}: {e}")
