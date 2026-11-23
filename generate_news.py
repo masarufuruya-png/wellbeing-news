@@ -41,7 +41,10 @@ def main():
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "temperature": 0.7
+            "temperature": 0.7,
+            "thinkingConfig": {
+                "thinkingBudget": 0
+            }
         }
     }
 
@@ -52,10 +55,9 @@ def main():
         method="POST"
     )
 
-    with urllib.request.urlopen(req, timeout=60) as res:
+    with urllib.request.urlopen(req, timeout=120) as res:
         result = json.loads(res.read().decode("utf-8"))
         text = result["candidates"][0]["content"]["parts"][0]["text"]
-        # 念のためJSONとして正しいか検証して整形保存
         parsed = json.loads(text)
         with open("news.json", "w", encoding="utf-8") as f:
             json.dump(parsed, f, ensure_ascii=False, indent=2)
