@@ -1,54 +1,64 @@
 import os
 import json
 import datetime
-from google import genai
-from google.genai import types
-from pydantic import BaseModel, Field
-
-class NewsItem(BaseModel):
-    perma: str = Field(description="P, E, R, M, A のいずれか1文字")
-    category: str = Field(description="例: マインドフルネス/フロー, 感謝・利他/Giver, レジリエンス/成長思考 など")
-    target: str = Field(description="一般社員・キャスト, Well-being lab, アワーズ動物学院 のいずれか")
-    title: str = Field(description="記事のタイトル")
-    summary: list[str] = Field(description="AI 3行要約（箇条書き3つ、各30文字程度）")
-    aw_value: str = Field(description="アドベンチャーワールド・アワーズの現場やAWS-WAYにどう活かせるかの解説（80文字程度）")
-    source_jp: str = Field(description="日本語の参考文献・書籍名")
-    source_en: str = Field(description="英語の原著論文名と著者・発表年")
-    source_url: str = Field(description="論文や関連情報の検索URLまたはDOIリンク")
-    question: str = Field(description="今日の問いかけ（Reflective Question）")
-
-class DailyNewsList(BaseModel):
-    date: str
-    articles: list[NewsItem]
+import urllib.request
 
 def main():
-    client = genai.Client(
-        api_key=os.environ["GEMINI_API_KEY"],
-        http_options=types.HttpOptions(timeout=180.0)
-    )
+    api_key = os.environ["GEMINI_API_KEY"]
     today = datetime.date.today().strftime("%Y-%m-%d")
 
     prompt = f"""
     今日は {today} です。
-    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けの社内プラットフォーム『CWO Well-being Morning News』に掲載する最新記事を3本、簡潔に作成してください。
-    - 心理学・ポジティブ心理学の実在する研究をベースにすること。
-    - 3本はPERMA分類（P, E, R, M, A）とターゲット（一般社員・キャスト / Well-being lab / アワーズ動物学院）を分けること。
+    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けの社内プラットフォーム『CWO Well-being Morning News』に掲載する最新記事を3本作成してください。
+
+    【出力形式】必ず以下のJSON形式のみを出力してください（マークダウンの```などは不要）。
+    {{
+      "date": "{today}",
+      "articles": [
+        {{
+          "perma": "P, E, R, M, A のいずれか1文字",
+          "category": "例: マインドフルネス/フロー",
+          "target": "一般社員・キャスト / Well-being lab / アワーズ動物学院 のいずれか",
+          "title": "記事のタイトル",
+          "summary": ["要約1", "要約2", "要約3"],
+          "aw_value": "アドベンチャーワールド・アワーズの現場やAWS-WAYにどう活かせるかの解説",
+          "source_jp": "日本語の参考文献・書籍名",
+          "source_en": "英語の原著論文名と著者・発表年",
+          "source_url": "論文や関連情報の検索URL",
+          "question": "今日の問いかけ"
+        }}
+      ]
+    }}
+
+    【条件】
+    - 心理学・ポジティブ心理学の実在する学術研究をベースにすること。
+    - 3本の記事はPERMA分類とターゲットをバランスよく分けること。
     - 「AW/アワーズ文脈の価値」ではパーク運営・動物飼育・AWS-WAY・Smile創造に絡めること。
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=DailyNewsList,
-            temperature=0.7,
-        ),
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={api_key}"
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "temperature": 0.7
+        }
+    }
+
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST"
     )
 
-    with open("news.json", "w", encoding="utf-8") as f:
-        f.write(response.text)
+    with urllib.request.urlopen(req, timeout=60) as res:
+        result = json.loads(res.read().decode("utf-8"))
+        text = result["candidates"][0]["content"]["parts"][0]["text"]
+        # 念のためJSONとして正しいか検証して整形保存
+        parsed = json.loads(text)
+        with open("news.json", "w", encoding="utf-8") as f:
+            json.dump(parsed, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     main()
-    
