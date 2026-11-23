@@ -23,7 +23,7 @@ def call_gemini(api_key, model, prompt):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "temperature": 0.85
+            "temperature": 0.65
         }
     }
     req = urllib.request.Request(
@@ -61,15 +61,23 @@ def main():
 
     prompt = f"""
     今日は {today}（{current_year}年）です。
-    株式会社アワーズ（アドベンチャーワールド運営）の社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を **必ず3本だけ** 作成してください。
+    あなたは株式会社アワーズ（アドベンチャーワールド運営）のCWO（最高ウェルビーイング責任者）を補佐する専門リサーチャーです。
+    社員・キャスト向けプラットフォーム『CWO Well-being Morning News』に掲載する最新記事を **必ず3本だけ** 作成してください。
 
-    【重要ルール】
-    - **記事数は必ず3本のみ**とすること。
-    - **必ず {current_year - 1}年〜{current_year}年 に発表された新しい学術研究・調査レポート・トレンド**をテーマにすること（古い古典論文は使わないこと）。
-    - `source_url` は、その論文タイトルやキーワードで直接検索できる確実なGoogle Scholar URL（`https://scholar.google.com/scholar?q=...`）にすること。
-    - 3本の記事はPERMA分類（P, E, R, M, A）が重複しないようにバランスよく割り振ること。
-    - ターゲット（`target`）は「一般社員・キャスト」「パーク運営・飼育現場」「アワーズ動物学院」のいずれかを設定すること（※過去に存在した「Well-being lab」という名称は現在実施していないため、本文・ターゲットともに一切使用しないこと）。
-    - 「aw_value」では、アドベンチャーワールドのパーク運営、動物飼育、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを具体的に解説すること。
+    【CWO品質基準・厳守ルール】
+    1. **架空の論文タイトル・架空データの創作を厳禁とする:**
+       - AIがそれらしく合成した架空の英語論文タイトルは絶対に作らないこと。
+       - 必ず実在する著名な調査レポート・研究機関・大学・学術誌（例: World Happiness Report 2025/2026、Gallup State of the Global Workplace、Harvard Business Review、MIT Sloan Management Review、Journal of Positive Psychology、APA、Nature / Science、オックスフォード大学ウェルビーイングリサーチセンター、京都大学・東京大学などの実在研究）に基づく**一次情報**のみを使用すること。
+       - 記事の要約（`summary`）には、**必ず具体的な調査数値・統計データ（例：「エンゲージメントが高いチームは生産性が21%高い」「1日5分の感謝の共有でバーンアウト率が〇%低下」など、調査対象人数やパーセンテージ等の客観的エビデンス）を1つ以上含めること**。
+    2. **情報の鮮度とリンクの確実性:**
+       - 直近（{current_year - 1}年〜{current_year}年）の最新レポートや最新の学術的知見・組織トレンドを取り上げること。
+       - `source_en` には、実在するレポート名・調査機関名・研究プロジェクト名と発表年を正確に記載すること。
+       - `source_url` には、その実在する調査名・機関名・論文キーワードでGoogle ScholarまたはGoogle検索で確実にヒットする検索URL（`https://scholar.google.com/scholar?q=...` または実在する公式トップURL）を設定すること。
+    3. **記事構成・表記ルール:**
+       - 記事数は **必ず3本のみ**。
+       - `perma` には必ず `"P"`, `"E"`, `"R"`, `"M"`, `"A"` のいずれか1文字を入れること（絶対に空欄やundefinedにしない）。3本で異なるアルファベットを割り振ること。
+       - `target` には「一般社員・キャスト」「パーク運営・飼育現場」「アワーズ動物学院」のいずれかを設定すること（※過去に存在した「Well-being lab」は現在実施していないため、本文・ターゲットともに一切使用しないこと）。
+       - `aw_value` では、アドベンチャーワールドのパーク運営、動物飼育（アニマルウェルフェア）、AWS-WAY、ゲストとスタッフのSmile創造にどう活かせるかを経営・CWO視点で具体的に解説すること。
 
     【出力形式】必ず以下のJSON形式のみを出力してください。
     {{
@@ -77,14 +85,18 @@ def main():
       "articles": [
         {{
           "perma": "P, E, R, M, A のいずれか1文字",
-          "category": "例: 最新組織心理学 / アニマルウェルフェア",
+          "category": "例: 最新組織行動学 / アニマルウェルフェア / ウェルビーイング統計",
           "target": "一般社員・キャスト / パーク運営・飼育現場 / アワーズ動物学院 のいずれか",
           "title": "記事のタイトル",
-          "summary": ["要約1", "要約2", "要約3"],
-          "aw_value": "アドベンチャーワールド・アワーズの現場やAWS-WAYにどう活かせるかの解説",
-          "source_jp": "日本語の解説・関連機関・研究テーマ名（発表年）",
-          "source_en": "英語の原著論文タイトルと著者・発表年（{current_year - 1}または{current_year}）",
-          "source_url": "https://scholar.google.com/scholar?q=論文タイトルをURLエンコードした文字列",
+          "summary": [
+            "具体的な調査機関・対象と数値データを含む要約1",
+            "研究から明らかになったメカニズム・要因の要約2",
+            "職場やチームへの示唆の要約3"
+          ],
+          "aw_value": "アドベンチャーワールド・アワーズの現場やAWS-WAYにどう活かせるかのCWO視点での解説",
+          "source_jp": "日本語での調査・研究の概要（実在する機関名・発表年）",
+          "source_en": "実在する原著レポート・調査名・研究機関名と発表年（{current_year - 1}または{current_year}）",
+          "source_url": "https://scholar.google.com/scholar?q=実在する調査名や論文キーワードをURLエンコードした文字列",
           "question": "今日の問いかけ"
         }}
       ]
@@ -100,7 +112,15 @@ def main():
             print(f"Attempt {attempt + 1}: trying {model}...")
             text = call_gemini(api_key, model, prompt)
             parsed = json.loads(text)
-            parsed["articles"] = parsed.get("articles", [])[:3]
+            articles = parsed.get("articles", [])[:3]
+            
+            # PERMAが空や不正な場合の安全補正
+            fallback_permas = ["P", "R", "M"]
+            for idx, art in enumerate(articles):
+                if art.get("perma") not in ["P", "E", "R", "M", "A"]:
+                    art["perma"] = fallback_permas[idx % 3]
+
+            parsed["articles"] = articles
             parsed["updated_at"] = timestamp
             parsed["history"] = history[:30]
             with open("news.json", "w", encoding="utf-8") as f:
