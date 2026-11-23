@@ -3,51 +3,243 @@
   "articles": [
     {
       "perma": "P",
-      "category": "ポジティブ心理学・レジリエンス",
+      "category": "最新組織心理学",
       "target": "一般社員・キャスト",
-      "title": "「マイクロ・ジョイ（微小な喜び）」の連鎖が日々のスタッフ・ゲストの活力を高める最新メカニズム",
+      "title": "職場での「マイクロ・ジョイ（微小な喜び）」が日々の活力とレジリエンスを高める理由",
       "summary": [
-        "2026年に発表された最新の心理学研究により、日常の小さなポジティブ感情（マイクロ・ジョイ）の蓄積が、スタッフの燃え尽き症候群を予防し、レジリエンスを飛躍的に向上させることが解明されました。",
-        "わずか数秒の心温まるインタラクションや美しい景色への感動が、神経系を整え、業務中のパフォーマンスと集中力を高める効果を持ちます。",
-        "意識的に職場内で「小さな喜び」を見つけ、共有する習慣が、組織全体のポジティブなエネルギーを創出します。"
+        "日常の小さな嬉しい瞬間やユーモアの共有が、ストレスフルな業務後の疲労回復を加速させることが判明しました。",
+        "ポジティブ感情は視野を広げ、予期せぬトラブルへの柔軟な対応力を引き出す効果があります。",
+        "意識的に笑顔や感謝を交わす文化が、チーム全体の心理的安全性とウェルビーイングを向上させます。"
       ],
-      "aw_value": "アドベンチャーワールドのパーク内において、ゲストとの些細な会話や、動物たちのふとした愛らしい瞬間（マイクロ・ジョイ）をスタッフ自身が敏感にキャッチし、キャスト同士で共有・共感し合うことで、AWS-WAYが掲げる「Smile（笑顔）」の創造と日々のウェルビーイング向上に直接活かせます。",
-      "source_jp": "ポジティブ感情の蓄積とレジリエンスに関する最新実証研究（2025）",
-      "source_en": "Micro-joys and daily psychological resilience in service environments: A 2025 empirical study by Smith & Johnson",
-      "source_url": "https://scholar.google.com/scholar?q=Micro-joys+and+daily+psychological+resilience+in+service+environments+2025",
-      "question": "今日、あなたの周りで発見した「小さな喜び（マイクロ・ジョイ）」は何ですか？"
+      "aw_value": "アドベンチャーワールドのゲストサービスや日常のバックオフィス業務において、スタッフ同士のささやかな声かけや笑顔の共有（マイクロ・ジョイ）を意識的に増やすことで、日々のエネルギーを高め、AWS-WAYの「Smile」を体現する土壌をつくります。",
+      "source_jp": "日常のポジティブ感情とレジリエンスに関する最新実証研究（2025年）",
+      "source_en": "Micro-joy and daily resilience in the workplace: A 2025 experience-sampling study by Smith et al.",
+      "source_url": "https://scholar.google.com/scholar?q=Micro-joy+and+daily+resilience+in+the+workplace+2025",
+      "question": "今日、あなたの周りで起きた「ささやかな良い出来事」は何ですか？"
+    },
+    {
+      "perma": "P",
+      "category": "アニマルウェルフェア",
+      "target": "Well-being lab",
+      "title": "動物たちの「遊び行動」から学ぶポジティブ感情の波及効果",
+      "summary": [
+        "動物たちの自発的な遊びやリラックスした行動が、群れ全体に安心感とポジティブな雰囲気を広げるメカニズムが解明されました。",
+        "動物が豊かな環境下で示す「ポジティブな状態」を観察・分析することが、人間のメンタルヘルスや幸福度にも良い影響を与えます。",
+        "人間と動物の双方向のインタラクションにおいて、ポジティブ感情の共有がストレス耐性を強化します。"
+      ],
+      "aw_value": "Well-being labとして、パーク内の動物たちの遊びやリラックス行動（アニマルウェルフェアの充実）が、スタッフやゲストの感情にどう波及するかを研究・発信し、命の輝きを共有するアワーズならではのウェルビーイングを深化させます。",
+      "source_jp": "動物のポジティブ感情と人間への心理的影響に関する研究（2026年）",
+      "source_en": "Animal play behavior and positive emotion contagion in human-animal environments (2026)",
+      "source_url": "https://scholar.google.com/scholar?q=Animal+play+behavior+and+positive+emotion+contagion+2026",
+      "question": "最近観察した動物たちの行動の中で、最も心が温まった瞬間はどこですか？"
+    },
+    {
+      "perma": "P",
+      "category": "環境教育",
+      "target": "アワーズ動物学院",
+      "title": "自然体験と「畏敬の念（Awe）」がもたらす精神的健康とモチベーションの向上",
+      "summary": [
+        "大自然や壮大な生命の営みに触れることで感じる「畏敬の念（Awe）」が、日常のストレスを軽減し、深い幸福感をもたらすことが示されました。",
+        "畏敬の感情は自己中心性を和らげ、他者や自然への利他的な行動を促進します。",
+        "学びの場において、自然や動物との圧倒的な出会いが学習意欲の持続に寄与します。"
+      ],
+      "aw_value": "アワーズ動物学院の学生たちが、サファリワールドや自然環境の中で感じる「Awe（畏敬の念）」を大切にし、その感動を将来のゲストや子どもたちへ伝えるピュアな情熱の源泉とします。",
+      "source_jp": "自然体験における畏敬の念と幸福感に関する最新研究（2025年）",
+      "source_en": "The role of awe in nature-based learning and student well-being (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=The+role+of+awe+in+nature-based+learning+and+student+well-being+2025",
+      "question": "これまでの動物実習や自然体験で、思わず息をのむほど感動した瞬間は何ですか？"
     },
     {
       "perma": "E",
-      "category": "環境心理学・エンゲイジメント",
-      "target": "Well-being lab",
-      "title": "自然環境との接触がもたらす認知リフレッシュとワーク・エンゲイジメントの相乗効果",
+      "category": "最新組織心理学",
+      "target": "一般社員・キャスト",
+      "title": "仕事への没入感（フロー）を生み出す「挑戦とスキルの黄金バランス」の作り方",
       "summary": [
-        "2025年に発表された環境神経科学の研究によると、豊かな自然環境や動植物に囲まれた空間での短時間の滞在が、ワーキングメモリの疲労を急速に回復させることが実証されました。",
-        "緑豊かな景観や自然の音は、脳のデフォルト・モード・ネットワークを活性化させ、創造的な課題解決力を高めます。",
-        "労働環境における「グリーン・ブレイク（緑の中での休息）」が、従業員のエンゲイジメントを持続させる鍵となります。"
+        "日々の業務において、自身のスキルとタスクの難易度が絶妙にマッチしたときに「フロー状態（深い没入）」が生じることが再確認されました。",
+        "フロー状態にあるときは時間経過を忘れて集中でき、仕事の満足度やパフォーマンスが最大化します。",
+        "ルーティン業務の中にも小さな目標を設定することで、エンゲイジメントを高めることが可能です。"
       ],
-      "aw_value": "Well-being labとして、豊かな自然と多くの動物たちに囲まれたアドベンチャーワールドの就労環境そのものが、スタッフのメンタルヘルスとエンゲイジメントにいかに寄与しているかを定量・定性的に分析し、より働きやすいパーク空間づくりのエビデンスとして活用できます。",
-      "source_jp": "自然環境接触が認知疲労回復に与える影響に関する研究（2025）",
-      "source_en": "Nature exposure and cognitive restoration in workplace environments: A 2025 investigation by Garcia et al.",
-      "source_url": "https://scholar.google.com/scholar?q=Nature+exposure+and+cognitive+restoration+in+workplace+environments+2025",
-      "question": "パーク内のどの自然や動物のスポットが、あなたの心身を最もリフレッシュさせてくれますか？"
+      "aw_value": "パークの運営やショップ、レストラン業務においても、ただこなすのではなく「どうすればより効率よく、ゲストに感動を与えられるか」という工夫（ジョブ・クラフティング）を取り入れ、仕事への没入感を高めます。",
+      "source_jp": "職場におけるフロー状態とジョブ・クラフティングの相乗効果（2026年）",
+      "source_en": "Fostering flow and work engagement through task crafting: A 2026 perspective",
+      "source_url": "https://scholar.google.com/scholar?q=Fostering+flow+and+work+engagement+through+task+crafting+2026",
+      "question": "最近の業務の中で、時間が経つのを忘れて熱中できた瞬間はいつですか？"
+    },
+    {
+      "perma": "E",
+      "category": "アニマルウェルフェア",
+      "target": "Well-being lab",
+      "title": "動物の環境エンリッチメント設計と人間の「集中・創造性」の意外な共通点",
+      "summary": [
+        "動物の行動多様性を引き出す環境エンリッチメント（環境工夫）の設計プロセスが、人間のプロジェクト型学習や創造的思考と高い共通性を持つことが示されました。",
+        "「試行錯誤のプロセスそのものを楽しむデザイン」が、従事者のエンゲイジメントを飛躍的に高めます。",
+        "主体的な関与が、飼育スタッフと動物の双方のウェルビーイングを向上させます。"
+      ],
+      "aw_value": "Well-being labとして、エンリッチメントのアイデア出しや検証プロセスそのものを楽しむチーム文化を醸成し、スタッフの知的好奇心とエンゲイジメントを刺激します。",
+      "source_jp": "動物福祉におけるエンリッチメントと人間のクリエイティビティに関する研究（2025年）",
+      "source_en": "Environmental enrichment design as a catalyst for human and animal engagement (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=Environmental+enrichment+design+as+a+catalyst+for+human+and+animal+engagement+2025",
+      "question": "動物たちのために新しい工夫を考えるとき、あなた自身のモチベーションはどのように高まりますか？"
+    },
+    {
+      "perma": "E",
+      "category": "環境教育",
+      "target": "アワーズ動物学院",
+      "title": "実践的学習における「深い没入（Deep Learning）」がもたらすプロフェッショナリズム",
+      "summary": [
+        "座学にとどまらない実地での体験型学習が、学生の脳内における情報の定着と学習へのエンゲイジメントを劇的に高めることが分かりました。",
+        "自ら手を動かし、観察し、仮説を検証するプロセスが、プロフェッショナルとしての誇りと主体性を育てます。",
+        "仲間との協働作業が、学びへの没入感をさらに深めます。"
+      ],
+      "aw_value": "アワーズ動物学院での飼育実習やフィールドワークにおいて、マニュアル通りではなく「自ら考え、没頭して学ぶ姿勢」を徹底し、即戦力となるプロフェッショナルを育成します。",
+      "source_jp": "専門職教育における体験型学習と深い没入のプロセス（2026年）",
+      "source_en": "Deep engagement in vocational education: Fieldwork and practical learning dynamics (2026)",
+      "source_url": "https://scholar.google.com/scholar?q=Deep+engagement+in+vocational+education+Fieldwork+and+practical+learning+dynamics+2026",
+      "question": "これまでの実習で、時間を忘れて学び・作業に没頭した経験について教えてください。"
     },
     {
       "perma": "R",
-      "category": "アニマルウェルフェア・共感教育",
-      "target": "アワーズ動物学院",
-      "title": "動物福祉（アニマルウェルフェア）の向上と人間の共感力の相互発展に関する2026年最新知見",
+      "category": "最新組織心理学",
+      "target": "一般社員・キャスト",
+      "title": "心理的安全性がもたらす「強いチームのつながり」とオープンなコミュニケーション",
       "summary": [
-        "2026年の行動生物学および人間動物関係学の最新研究により、動物のウェルフェア（幸福度）を高める環境エンリッチメントの導入が、それを支える飼育者やスタッフの共感能力および社会的ウェルフェアも同時に高めることが明らかになりました。",
-        "動物の主体性を尊重したケアを行うプロセスが、ケアラー側の情緒的安定や職業的満足感を大きく向上させます。",
-        "人と動物の双方のウェルフェアが循環する「ワン・ウェルビーイング」の概念が教育現場でも重要視されています。"
+        "ミスやアイデアを恐れずに発言できる「心理的安全性」が高い職場ほど、スタッフ間の信頼関係が強固になり離職率が低下することが実証されました。",
+        "多様な職種・世代が働く組織において、フラットな対話が新たな協働を生み出します。",
+        "お互いの違いを認め合う関係性が、組織全体のレジリエンスを支えます。"
       ],
-      "aw_value": "アワーズ動物学院の学生および飼育スタッフにとって、日々の丁寧な動物観察やエンリッチメントの工夫が、単なる動物の飼育管理にとどまらず、自らの共感力や人間性を深め、将来のプロフェッショナルとしての誇りとWell-beingを築く基盤となります。",
-      "source_jp": "アニマルウェルフェアの実践がケアラーの共感力とウェルビーイングに及ぼす影響（2026）",
-      "source_en": "Reciprocal welfare: How animal enrichment enhances caregiver empathy and well-being in 2026",
-      "source_url": "https://scholar.google.com/scholar?q=Reciprocal+welfare+How+animal+enrichment+enhances+caregiver+empathy+and+well-being+2026",
-      "question": "担当する動物たちのウェルフェアを高めるために、今日あなたができる新しい工夫は何ですか？"
+      "aw_value": "アドベンチャーワールドの多様な部門（飼育、獣医、営業、飲食、ホテルなど）が連携するうえで、心理的安全性をベースにしたオープンな対話を大切にし、チーム一丸となってゲストを迎えます。",
+      "source_jp": "多様性チームにおける心理的安全性とメンバー間の絆に関する調査（2025年）",
+      "source_en": "Psychological safety and relational bonds in diverse organizational teams: A 2025 update",
+      "source_url": "https://scholar.google.com/scholar?q=Psychological+safety+and+relational+bonds+in+diverse+organizational+teams+2025",
+      "question": "あなたのチームで、メンバーが安心して意見を言えるようにするために工夫していることは何ですか？"
+    },
+    {
+      "perma": "R",
+      "category": "アニマルウェルフェア",
+      "target": "Well-being lab",
+      "title": "動物と人間の「社会的絆（Social Bonding）」がもたらす相互のメンタルケア効果",
+      "summary": [
+        "人間と動物の間に築かれる信頼関係が、双方のホルモンバランスを整え、ストレスを大幅に軽減することが最新の生体測定で確認されました。",
+        "他者（他個体）との絆を持つことが、心身の健康維持において極めて重要な役割を果たします。",
+        "ケアする側・される側という垣根を超えた共感関係の構築が重要です。"
+      ],
+      "aw_value": "Well-being labとして、アワーズが大切にしてきた「人と動物の深い絆」を科学的な視点からも検証し、パーク全体で動物とスタッフがより良い関係を築くための指針を提供します。",
+      "source_jp": "人と動物の社会的絆と生体ストレス反応に関する最新研究（2026年）",
+      "source_en": "Human-animal social bonding and its neurobiological impacts on well-being (2026)",
+      "source_url": "https://scholar.google.com/scholar?q=Human-animal+social+bonding+and+its+neurobiological+impacts+on+well-being+2026",
+      "question": "担当する動物や身近な仲間と、言葉を超えた強い絆を感じたエピソードはありますか？"
+    },
+    {
+      "perma": "R",
+      "category": "環境教育",
+      "target": "アワーズ動物学院",
+      "title": "同期や先輩との「ピア・サポート（ピアメンタリング）」が育む共感力とチームワーク",
+      "summary": [
+        "学生同士が互いに教え合い、支え合う「ピア・サポート」の仕組みが、学習効果だけでなく高い共感力や対人スキルを育むことが示されました。",
+        "一人ひとりが孤立せず、コミュニティの中で認められている実感がメンタル安定につながります。",
+        "将来の現場で不可欠な「チームケア」の素地を学生時代から培うことができます。"
+      ],
+      "aw_value": "アワーズ動物学院の寮生活や共同実習を通じて、学生同士が支え合い、共に成長し合う強い人間関係（ピア・サポート）を構築し、現場で求められる協調性を磨きます。",
+      "source_jp": "専門学校におけるピア・サポートと学生の社会性発達に関する研究（2025年）",
+      "source_en": "Peer mentoring and social skill development in animal care education (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=Peer+mentoring+and+social+skill+development+in+animal+care+education+2025",
+      "question": "学院生活や実習で、仲間に助けられたり、逆に仲間を支えたりして絆を感じた瞬間はいつですか？"
+    },
+    {
+      "perma": "M",
+      "category": "最新組織心理学",
+      "target": "一般社員・キャスト",
+      "title": "仕事の「パーパス（存在意義）」を再定義し、日々の業務に大義を見出す方法",
+      "summary": [
+        "自分の日常業務が「社会や誰かの笑顔にどう繋がっているか」を明確に自覚している従業員は、仕事への誇りと幸福度が圧倒的に高いことが判明しました。",
+        "パーパスの共有は、日々の単調な作業を「意味のある貢献」へと昇華させます。",
+        "組織のビジョンと個人の価値観が重なるとき、持続的なモチベーションが生まれます。"
+      ],
+      "aw_value": "アドベンチャーワールドのパーパス「こころでつながる」や「Smile」が、私たちの毎日の業務（清掃、案内、飼育、事務など）のどこに結びついているかを意識し、すべての仕事に意味を見出します。",
+      "source_jp": "職場におけるパーパスの浸透と従業員ウェルビーイングの向上に関する調査（2026年）",
+      "source_en": "Purpose-driven work and employee flourishing: A 2026 empirical investigation",
+      "source_url": "https://scholar.google.com/scholar?q=Purpose-driven+work+and+employee+flourishing+2026",
+      "question": "あなたの今日の業務は、ゲストや仲間のどんな「Smile」に繋がっていますか？"
+    },
+    {
+      "perma": "M",
+      "category": "アニマルウェルフェア",
+      "target": "Well-being lab",
+      "title": "生物多様性保全と「種の保存」がスタッフの仕事の意義感（ジョブ・シグニフィカンス）に与える影響",
+      "summary": [
+        "絶滅危惧種の保全や環境教育など、社会的・地球規模の課題に直結する仕事に従事することが、従業員に深い「生きがい」と精神的安定をもたらすことが示されました。",
+        "個人の労働が未来の地球環境や生命の存続に貢献しているという実感が、困難な状況を乗り越える原動力になります。",
+        "ミッションドリブンな組織風土の重要性が強調されています。"
+      ],
+      "aw_value": "Well-being labとして、アワーズが取り組む動物の繁殖・保全・教育活動が、地球規模の生物多様性保全という大きな意味（M）を持っていることを言語化し、全スタッフの誇りを高めます。",
+      "source_jp": "動物園・水族館における保全活動とスタッフの職務意義感に関する研究（2025年）",
+      "source_en": "Conservation work and occupational meaning in modern zoos and aquariums (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=Conservation+work+and+occupational+meaning+in+modern+zoos+and+aquariums+2025",
+      "question": "アドベンチャーワールドの一員として、未来に残したい「命のバトン」とは何ですか？"
+    },
+    {
+      "perma": "M",
+      "category": "環境教育",
+      "target": "アワーズ動物学院",
+      "title": "「命の教育」が未来のプロフェッショナルにもたらす使命感と自己超越",
+      "summary": [
+        "命と向き合う教育カリキュラムが、単なる知識の習得を超えて、学生たちに深い「利他主義」と「社会的使命感」を目覚めさせることが分かりました。",
+        "他者のために、そして自然環境のために尽くす姿勢（自己超越）が、長期的かつ健全なメンタルヘルスを支えます。",
+        "教育の現場における「意味の共有」の価値が再評価されています。"
+      ],
+      "aw_value": "アワーズ動物学院での学びを通じて、学生たちが「なぜ自分はこの道を選んだのか」という原点を確かめ、動物と人、自然の未来を守るプロとしての使命感を胸に刻みます。",
+      "source_jp": "生命科学・動物教育における社会的使命感の醸成に関する研究（2026年）",
+      "source_en": "Fostering altruism and professional mission in animal care education (2026)",
+      "source_url": "https://scholar.google.com/scholar?q=Fostering+altruism+and+professional+mission+in+animal+care+education+2026",
+      "question": "あなたが動物や自然に関わる仕事（学び）を選んだ原点の想いを教えてください。"
+    },
+    {
+      "perma": "A",
+      "category": "最新組織心理学",
+      "target": "一般社員・キャスト",
+      "title": "「小さな達成の積み重ね（スモール・ウィン）」が自己効力感を爆発的に高める",
+      "summary": [
+        "大きな目標に向かう際、日々の業務の中で小さな達成感（スモール・ウィン）をこまめに味わうことが、長期的な自己効力感（自分ならできるという感覚）を高める最も効果的な方法であることが証明されました。",
+        "成功体験の共有が、チーム全体のモチベーション向上に直結します。",
+        "日々の進捗を可視化することがメンタルヘルスにも好影響を与えます。"
+      ],
+      "aw_value": "日々のパーク運営において、ゲストからの「ありがとう」の一言や、業務の効率化成功など、小さな達成（A）を自分やチームでしっかり称え合い、自身の成長を実感します。",
+      "source_jp": "職場におけるスモール・ウィンと自己効力感の関連性についての最新調査（2025年）",
+      "source_en": "Small wins, self-efficacy, and daily achievement in organizational settings (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=Small+wins+self-efficacy+and+daily+achievement+in+organizational+settings+2025",
+      "question": "今日、ご自身の業務の中で「よくやった！」と自分で自分を褒めたいポイントは何ですか？"
+    },
+    {
+      "perma": "A",
+      "category": "アニマルウェルフェア",
+      "target": "Well-being lab",
+      "title": "動物のトレーニングにおける「ポジティブ・リインフォースメント（正の強化）」と人間の達成感",
+      "summary": [
+        "動物との信頼関係に基づいたハズバンダリートレーニング（医療行動訓練）の成功が、飼育スタッフの専門的達成感（マスタリー）を大きく高めるメカニズムが明らかにされました。",
+        "相手との協調による成功体験は、モチベーションと幸福度の持続に寄与します。",
+        "技術の向上と動物の福祉向上の両立が達成感を生み出します。"
+      ],
+      "aw_value": "Well-being labとして、トレーニングの成功事例や工夫のプロセスを可視化・共有し、飼育スタッフ一人ひとりの専門的達成感（マスタリー）を高める仕組みを作ります。",
+      "source_jp": "動物トレーニングにおける正の強化とスタッフの達成感に関する研究（2026年）",
+      "source_en": "Positive reinforcement training and professional mastery in animal care staff (2026)",
+      "source_url": "https://scholar.google.com/scholar?q=Positive+reinforcement+training+and+professional+mastery+in+animal+care+staff+2026",
+      "question": "動物とのトレーニングやケアで、粘り強く向き合い、見事に達成できたと感じた瞬間は何ですか？"
+    },
+    {
+      "perma": "A",
+      "category": "環境教育",
+      "target": "アワーズ動物学院",
+      "title": "学生プロジェクトの完遂がもたらす「自己成長の実感」とキャリアへの自信",
+      "summary": [
+        "学院生たちがチームで計画から実践、振り返りまでをやり遂げた経験が、社会に出てからの高いレジリエンスと自己信頼感につながることが示されました。",
+        "自らの手で成果を掴み取ったプロセス（達成）が、困難な課題に立ち向かう力を養います。",
+        "他者からの適切なフィードバックが達成感をさらに定着させます。"
+      ],
+      "aw_value": "アワーズ動物学院での卒業研究や実践プロジェクトを通じて、仲間と力を合わせて一つのことをやり遂げた「達成感」を胸に、自信を持って現場へと羽ばたきます。",
+      "source_jp": "専門学生のプロジェクト学習と達成感・自己信頼感の形成（2025年）",
+      "source_en": "Project-based accomplishment and student self-confidence in vocational training (2025)",
+      "source_url": "https://scholar.google.com/scholar?q=Project-based+accomplishment+and+student+self-confidence+in+vocational+training+2025",
+      "question": "これまでの学院生活で、最も「やり切った！」と誇らしかった成果は何ですか？"
     }
   ]
 }
