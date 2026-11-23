@@ -27,12 +27,11 @@
       color: #fff;
       padding: 28px 20px;
       text-align: center;
-      position: relative;
     }
     header h1 { margin: 0 0 6px; font-size: 1.75rem; letter-spacing: 0.02em; }
     header p { margin: 0; opacity: 0.92; font-size: 0.95rem; }
     .header-controls {
-      margin-top: 12px;
+      margin-top: 14px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,83 +40,76 @@
     }
     .date-badge {
       background: rgba(255,255,255,0.18);
-      padding: 5px 14px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
+      font-weight: 600;
     }
     .update-btn {
       background: #f59e0b;
       color: #fff;
       border: none;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      transition: transform 0.1s, background 0.15s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      transition: background 0.15s, transform 0.1s;
     }
     .update-btn:hover { background: #d97706; transform: translateY(-1px); }
-    .reload-btn {
-      background: rgba(255,255,255,0.22);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .reload-btn:hover { background: rgba(255,255,255,0.32); }
-    .container { max-width: 1100px; margin: 20px auto 48px; padding: 0 16px; }
-    .filter-panel {
+    .update-btn:disabled { background: #94a3b8; cursor: not-allowed; transform: none; }
+    .container { max-width: 1120px; margin: 20px auto 48px; padding: 0 16px; }
+    .toolbar {
       background: var(--card);
       border-radius: 14px;
-      padding: 16px 20px;
+      padding: 14px 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.04);
       margin-bottom: 22px;
-    }
-    .filter-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .history-box {
+      display: flex;
+      align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
-    .filter-row:last-child { margin-bottom: 0; }
-    .filter-label { font-weight: 700; font-size: 0.85rem; min-width: 115px; color: var(--muted); }
-    .chip {
+    .history-label { font-weight: 700; font-size: 0.85rem; color: var(--muted); }
+    select {
+      padding: 7px 12px;
+      border-radius: 8px;
       border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
+      color: var(--text);
+      background: #fff;
       cursor: pointer;
-      transition: all 0.15s;
     }
-    .chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .breath-btn {
-      margin-left: auto;
       background: #10b981;
       color: #fff;
       border: none;
-      padding: 7px 14px;
+      padding: 8px 16px;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       cursor: pointer;
     }
-    .count-info {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 12px;
+    .status-banner {
+      display: none;
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      color: #92400e;
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      font-size: 0.88rem;
       font-weight: 600;
+      text-align: center;
     }
     .grid {
       display: grid;
@@ -181,10 +173,19 @@
     }
     .modal-inner {
       background: #fff;
-      padding: 28px;
+      padding: 26px;
       border-radius: 16px;
-      max-width: 400px;
+      max-width: 420px;
+      width: 90%;
       text-align: center;
+    }
+    .token-input {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -194,33 +195,22 @@
     <p>アワーズ＆アドベンチャーワールドのSmileを育む情報共有プラットフォーム</p>
     <div class="header-controls">
       <div class="date-badge" id="newsDate">読み込み中...</div>
-      <button class="update-btn" onclick="openUpdateGuide()">🔄 記事を最新に更新</button>
-      <button class="reload-btn" onclick="loadNews()">↻ 再読み込み</button>
+      <button class="update-btn" id="directUpdateBtn" onclick="triggerDirectUpdate()">🔄 記事を最新に更新</button>
     </div>
   </header>
 
   <div class="container">
-    <div class="filter-panel">
-      <div class="filter-row" id="permaFilters">
-        <span class="filter-label">PERMA分類:</span>
-        <button class="chip active" data-perma="ALL">すべて</button>
-        <button class="chip" data-perma="P">P (感情)</button>
-        <button class="chip" data-perma="E">E (没入)</button>
-        <button class="chip" data-perma="R">R (関係)</button>
-        <button class="chip" data-perma="M">M (意義)</button>
-        <button class="chip" data-perma="A">A (達成)</button>
+    <div class="toolbar">
+      <div class="history-box">
+        <span class="history-label">📜 表示する配信回:</span>
+        <select id="historySelect" onchange="changeEdition()">
+          <option value="latest">最新の記事（現在）</option>
+        </select>
       </div>
-      <div class="filter-row" id="targetFilters">
-        <span class="filter-label">パーソナライズ:</span>
-        <button class="chip active" data-target="ALL">すべて</button>
-        <button class="chip" data-target="一般社員・キャスト">一般社員/キャスト</button>
-        <button class="chip" data-target="Well-being lab">Well-being lab</button>
-        <button class="chip" data-target="アワーズ動物学院">アワーズ動物学院</button>
-        <button class="breath-btn" onclick="openBreath()">🧘 3 Breaths リセット</button>
-      </div>
+      <button class="breath-btn" onclick="openBreath()">🧘 3 Breaths リセット</button>
     </div>
 
-    <div class="count-info" id="countInfo"></div>
+    <div class="status-banner" id="statusBanner"></div>
     <div class="grid" id="newsGrid"></div>
   </div>
 
@@ -233,58 +223,73 @@
     </div>
   </div>
 
-  <!-- 手動更新ガイドモーダル -->
-  <div class="modal" id="updateModal" onclick="closeUpdateGuide()">
+  <!-- 初回トークン登録モーダル -->
+  <div class="modal" id="tokenModal" onclick="closeTokenModal()">
     <div class="modal-inner" onclick="event.stopPropagation()">
-      <h3>🔄 記事を最新の15本に更新</h3>
-      <p style="font-size:0.9rem; text-align:left; line-height:1.6;">
-        1. 下のボタンから更新実行画面を開きます。<br>
-        2. 右上の <strong>「Run workflow」</strong> ＞ 緑色の <strong>「Run workflow」</strong> を押します。<br>
-        3. 約30秒後にこの画面へ戻り <strong>「↻ 再読み込み」</strong> を押すと最新記事に切り替わります！
+      <h3>🔑 初回のみ：更新用キーの設定</h3>
+      <p style="font-size:0.85rem; text-align:left; color:var(--muted); line-height:1.5;">
+        この画面から直接記事を更新するため、GitHubの更新トークン（<code>ghp_...</code> または <code>github_pat_...</code>）を入力してください。<br>
+        ※一度入力するとこのブラウザに保存され、次回からはワンクリックで即更新できます。
       </p>
-      <div style="display:flex; gap:8px; margin-top:16px;">
-        <a class="btn btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;" href="https://github.com/masarufuruya-png/wellbeing-news/actions/workflows/daily_news.yml" target="_blank" rel="noopener">更新実行画面を開く ↗</a>
-        <button class="btn" onclick="closeUpdateGuide()">閉じる</button>
+      <input type="password" id="tokenInput" class="token-input" placeholder="GitHub Personal Access Token を貼り付け" />
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-primary" onclick="saveTokenAndRun()">保存して更新を実行</button>
+        <button class="btn" onclick="closeTokenModal()">キャンセル</button>
       </div>
     </div>
   </div>
 
   <script>
-    let allArticles = [];
-    let selectedPerma = "ALL";
-    let selectedTarget = "ALL";
+    const OWNER = "masarufuruya-png";
+    const REPO = "wellbeing-news";
+    const WORKFLOW = "daily_news.yml";
+
+    let rawData = null;
+    let currentArticles = [];
 
     async function loadNews() {
       try {
-        document.getElementById("newsDate").textContent = "読み込み中...";
         const res = await fetch("./news.json?t=" + Date.now());
-        const data = await res.json();
-        document.getElementById("newsDate").textContent = "配信日: " + (data.date || "最新");
-        allArticles = data.articles || [];
-        renderArticles();
+        rawData = await res.json();
+        buildHistorySelect();
+        showEdition("latest");
       } catch (e) {
-        document.getElementById("newsDate").textContent = "最新ニュースを取得できませんでした";
+        document.getElementById("newsDate").textContent = "ニュースを読み込めませんでした";
       }
+    }
+
+    function buildHistorySelect() {
+      const sel = document.getElementById("historySelect");
+      const currentLabel = rawData.updated_at || rawData.date || "最新";
+      sel.innerHTML = `<option value="latest">✨ 最新（${currentLabel}）</option>`;
+      (rawData.history || []).forEach((item, idx) => {
+        const opt = document.createElement("option");
+        opt.value = String(idx);
+        opt.textContent = `📁 過去記事（${item.label}）`;
+        sel.appendChild(opt);
+      });
+    }
+
+    function changeEdition() {
+      const val = document.getElementById("historySelect").value;
+      showEdition(val);
+    }
+
+    function showEdition(val) {
+      if (val === "latest") {
+        currentArticles = rawData.articles || [];
+        document.getElementById("newsDate").textContent = "配信: " + (rawData.updated_at || rawData.date || "最新");
+      } else {
+        const item = rawData.history[Number(val)];
+        currentArticles = item.articles || [];
+        document.getElementById("newsDate").textContent = "過去アーカイブ: " + item.label;
+      }
+      renderArticles();
     }
 
     function renderArticles() {
       const grid = document.getElementById("newsGrid");
-      const filtered = allArticles.filter(a => {
-        const matchP = selectedPerma === "ALL" || a.perma === selectedPerma;
-        const matchT = selectedTarget === "ALL" || (a.target && a.target.includes(selectedTarget));
-        return matchP && matchT;
-      });
-
-      document.getElementById("countInfo").textContent = `表示中の記事: ${filtered.length} 件（全 ${allArticles.length} 件）`;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = "<p>該当する記事がありません。「すべて」を選択してください。</p>";
-        return;
-      }
-
-      grid.innerHTML = filtered.map((a) => {
-        const originalIdx = allArticles.indexOf(a);
-        return `
+      grid.innerHTML = currentArticles.map((a, idx) => `
         <article class="card">
           <div class="badges">
             <span class="badge b-perma">PERMA: ${a.perma}</span>
@@ -310,42 +315,102 @@
             <div>${a.question}</div>
           </div>
           <div class="actions">
-            <button class="btn" onclick="copyTunag(${originalIdx})">📋 TUNAG用にコピー</button>
+            <button class="btn" onclick="copyTunag(${idx})">📋 TUNAG用にコピー</button>
             <button class="btn btn-primary" onclick="this.textContent='👍 学習済み！'">👍 役立った</button>
           </div>
         </article>
-      `}).join("");
+      `).join("");
     }
 
     function copyTunag(idx) {
-      const a = allArticles[idx];
+      const a = currentArticles[idx];
       const text = `【今日のWell-being Morning News】\n■ ${a.title}（${a.category}）\n${(a.summary || []).map(s => "・" + s).join("\n")}\n\n【アワーズでの実践ヒント】\n${a.aw_value}\n\n【今日の問いかけ】\n${a.question}`;
       navigator.clipboard.writeText(text);
       alert("TUNAG投稿用にコピーしました！");
     }
 
-    document.querySelectorAll("#permaFilters .chip").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll("#permaFilters .chip").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        selectedPerma = btn.dataset.perma;
-        renderArticles();
-      });
-    });
+    async function triggerDirectUpdate() {
+      const token = localStorage.getItem("gh_news_token");
+      if (!token) {
+        document.getElementById("tokenModal").style.display = "flex";
+        return;
+      }
 
-    document.querySelectorAll("#targetFilters .chip").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll("#targetFilters .chip").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        selectedTarget = btn.dataset.target;
-        renderArticles();
-      });
-    });
+      const btn = document.getElementById("directUpdateBtn");
+      const banner = document.getElementById("statusBanner");
+      const beforeStamp = rawData ? (rawData.updated_at || "") : "";
 
+      btn.disabled = true;
+      btn.textContent = "⏳ AIが最新記事を生成中...";
+      banner.style.display = "block";
+      banner.textContent = "🤖 AIが新しい3記事を生成しています（約40秒後に自動で画面が切り替わります。更新前の記事は自動で履歴に保存されます）...";
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${WORKFLOW}/dispatches`, {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github+json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ ref: "main" })
+        });
+
+        if (!res.ok) {
+          localStorage.removeItem("gh_news_token");
+          throw new Error("認証エラー（トークンを再設定してください）");
+        }
+
+        // 新しい記事が反映されるまで自動ポーリング（最大90秒）
+        let tries = 0;
+        const timer = setInterval(async () => {
+          tries++;
+          try {
+            const check = await fetch("./news.json?t=" + Date.now());
+            const latest = await check.json();
+            if (latest.updated_at && latest.updated_at !== beforeStamp) {
+              clearInterval(timer);
+              rawData = latest;
+              buildHistorySelect();
+              showEdition("latest");
+              btn.disabled = false;
+              btn.textContent = "🔄 記事を最新に更新";
+              banner.style.background = "#d1fae5";
+              banner.style.borderColor = "#10b981";
+              banner.style.color = "#065f46";
+              banner.textContent = "✅ 新しい3記事に更新されました！過去の記事は上のプルダウンからいつでも見られます。";
+              setTimeout(() => { banner.style.display = "none"; }, 8000);
+            }
+          } catch (e) {}
+
+          if (tries >= 18) {
+            clearInterval(timer);
+            btn.disabled = false;
+            btn.textContent = "🔄 記事を最新に更新";
+            banner.textContent = "反映に少し時間がかかっています。数秒後にブラウザを再読み込みしてください。";
+          }
+        }, 5000);
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "🔄 記事を最新に更新";
+        banner.style.display = "none";
+        alert(err.message);
+        document.getElementById("tokenModal").style.display = "flex";
+      }
+    }
+
+    function saveTokenAndRun() {
+      const val = document.getElementById("tokenInput").value.trim();
+      if (!val) return;
+      localStorage.setItem("gh_news_token", val);
+      closeTokenModal();
+      triggerDirectUpdate();
+    }
+
+    function closeTokenModal() { document.getElementById("tokenModal").style.display = "none"; }
     function openBreath() { document.getElementById("breathModal").style.display = "flex"; }
     function closeBreath() { document.getElementById("breathModal").style.display = "none"; }
-    function openUpdateGuide() { document.getElementById("updateModal").style.display = "flex"; }
-    function closeUpdateGuide() { document.getElementById("updateModal").style.display = "none"; }
 
     loadNews();
   </script>
