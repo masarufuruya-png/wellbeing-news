@@ -2,6 +2,7 @@ import os
 import json
 import datetime
 from google import genai
+from google.genai import types
 from pydantic import BaseModel, Field
 
 class NewsItem(BaseModel):
@@ -21,7 +22,11 @@ class DailyNewsList(BaseModel):
     articles: list[NewsItem]
 
 def main():
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    print("Starting news generation...")
+    client = genai.Client(
+        api_key=os.environ["GEMINI_API_KEY"],
+        http_options=types.HttpOptions(timeout=30.0)
+    )
     today = datetime.date.today().strftime("%Y-%m-%d")
 
     prompt = f"""
@@ -47,6 +52,7 @@ def main():
 
     with open("news.json", "w", encoding="utf-8") as f:
         f.write(response.text)
+    print("Successfully saved news.json!")
 
 if __name__ == "__main__":
     main()
