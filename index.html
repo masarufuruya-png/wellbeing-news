@@ -265,7 +265,7 @@
       (rawData.history || []).forEach((item, idx) => {
         const opt = document.createElement("option");
         opt.value = String(idx);
-        opt.textContent = `📁 過去記事（${item.label}）`;
+        opt.textContent = `📁 過去配信（${item.label}）`;
         sel.appendChild(opt);
       });
     }
@@ -277,11 +277,11 @@
 
     function showEdition(val) {
       if (val === "latest") {
-        currentArticles = rawData.articles || [];
+        currentArticles = (rawData.articles || []).slice(0, 3);
         document.getElementById("newsDate").textContent = "配信: " + (rawData.updated_at || rawData.date || "最新");
       } else {
         const item = rawData.history[Number(val)];
-        currentArticles = item.articles || [];
+        currentArticles = (item.articles || []).slice(0, 3);
         document.getElementById("newsDate").textContent = "過去アーカイブ: " + item.label;
       }
       renderArticles();
@@ -361,7 +361,6 @@
           throw new Error("認証エラー（トークンを再設定してください）");
         }
 
-        // 新しい記事が反映されるまで自動ポーリング（最大90秒）
         let tries = 0;
         const timer = setInterval(async () => {
           tries++;
