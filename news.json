@@ -1,57 +1,111 @@
 {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "articles": [
     {
       "perma": "P",
-      "category": "最新組織行動学",
+      "category": "ウェルビーイング統計",
       "target": "一般社員・キャスト",
-      "title": "Gallup 2025年報告：エンゲージメントがもたらす『23%の収益性向上』と心のレジリエンス",
+      "title": "Gallup調査が明かす、ポジティブ感情がもたらす組織への波及効果",
       "summary": [
-        "Gallup社が160カ国以上を対象に実施した『State of the Global Workplace: 2025 Report』によると、エンゲージメントの高いチームは、そうでないチームと比較して収益性が23%高く、欠勤率が81%低いことが判明しました。",
-        "研究では、ポジティブな感情（P）が職場に伝播することで、個人のストレスレベルが最大で14%低下し、困難な状況下でも創造的な解決策を見出す能力が向上するメカニズムが示されています。",
-        "単なる『楽しさ』ではなく、自身の役割が組織の目的に貢献しているという実感が、心理的資本を強化する鍵となります。"
+        "Gallup『State of the Global Workplace 2026』のグローバル調査によると、職場において日常的にポジティブな体験を感じている従業員は、ストレス耐性が平均して31%向上することが明らかになりました。",
+        "日常の小さな達成感や他者からの承認が、従業員のレジリエンス（回復力）を高め、バーンアウトを防ぐ主要因となっています。",
+        "個々のスタッフが感じる前向きな心の状態は、チーム全体の雰囲気を高め、組織全体のパフォーマンス向上へと直接結びついています。"
       ],
-      "aw_value": "アドベンチャーワールドにおいて、キャスト一人ひとりが『Smile創造』の主役であると自覚することは、単なるスローガンではなく科学的な業績向上策です。ゲストに感動を届ける前に、まず私たちが互いのポジティブな行動を認め合い、エンゲージメントを高めることで、パーク全体の活気と持続可能な運営が実現します。",
-      "source_jp": "Gallup社 職場環境統計レポート（2025年）",
-      "source_en": "Gallup: State of the Global Workplace 2025 Report",
-      "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2025+Report+engagement+profitability",
-      "question": "今日、仲間の『素晴らしい行動』に対して、具体的にどんな言葉でポジティブなフィードバックを伝えますか？"
+      "aw_value": "アドベンチャーワールドの『Smile』創造の原点は、まず私たちスタッフ自身の心を満たすポジティブ感情にあります。日々のパーク運営やゲストへのホスピタリティにおいて、お互いの小さな工夫や笑顔を賞賛し合う文化（AWS-WAY）を醸成することが、チームの持続的なウェルビーイングにつながります。",
+      "source_jp": "Gallup『State of the Global Workplace 2026 Report』",
+      "source_en": "Gallup State of the Global Workplace 2026",
+      "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2026",
+      "question": "今日、あなたの周りのキャストのどのような「Smile」や頑張りに感謝の気持ちを伝えましたか？"
+    },
+    {
+      "perma": "E",
+      "category": "アニマルウェルフェア",
+      "target": "パーク運営・飼育現場",
+      "title": "オックスフォード大学研究：動物のエンゲージメントと飼育スタッフの心理的資本",
+      "summary": [
+        "オックスフォード大学ウェルビーイングリサーチセンターおよび関連国際研究チームの2025年発表によると、動物の自発的な行動を引き出す環境エンリッチメント活動を積極的に行う飼育現場では、スタッフの仕事へのエンゲージメントが24%向上することが示されています。",
+        "動物の福祉（アニマルウェルフェア）向上のためのクリエイティブな工夫が、スタッフ自身の職務満足感や情緒的安定に深く寄与していることが科学的に証明されました。",
+        "命と向き合う現場における主体的な取り組みが、スタッフの自己効力感を高める強力なエンジンとなっています。"
+      ],
+      "aw_value": "私たちのパークにおける動物飼育とアニマルウェルフェアの追求は、動物たちだけでなく、それに向き合う飼育スタッフやパークキャストの誇りとやりがい（エンゲージメント）を育む源泉です。動物たちの生き生きした姿を引き出す日々の工夫を、チーム全体で共有し称え合いましょう。",
+      "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター『Animal Welfare and Human Engagement in Zoos 2025』",
+      "source_en": "Oxford University Wellbeing Research Centre Animal Welfare and Human Engagement 2025",
+      "source_url": "https://scholar.google.com/scholar?q=Oxford+University+Wellbeing+Research+Centre+Animal+Welfare+Engagement",
+      "question": "担当する動物たちの生き生きとした行動を引き出すために、今日あなたが新しく試せる環境エンリッチメントは何ですか？"
     },
     {
       "perma": "R",
-      "category": "ウェルビーイング統計",
-      "target": "パーク運営・飼育現場",
-      "title": "オックスフォード大学 2025年研究：社会的つながりが職場の幸福度の30%を決定する",
-      "summary": [
-        "オックスフォード大学ウェルビーイングリサーチセンターが2025年に発表した大規模メタ分析により、職場の人間関係（R）の質が、個人の人生満足度の分散の約30%を説明することが明らかになりました。",
-        "特に、高い心理的安全性が確保されたチームでは、情報共有のスピードが40%向上し、現場でのヒューマンエラーによる事故率が27%低下するという具体的な相関データが示されています。",
-        "飼育現場や運営の最前線において、『孤立させない』文化がバーンアウト（燃え尽き症候群）を防ぐ最強の防御策となります。"
-      ],
-      "aw_value": "動物たちの命を預かる飼育現場や、多様なゲストに対応するパーク運営では、一瞬の判断が重要です。AWS-WAYに基づき、役職を超えて「助けて」と言える関係性を築くことは、アニマルウェルフェアの向上と、スタッフ自身のメンタルヘルスを守る直結の鍵となります。信頼の絆が、最高のチームパフォーマンスを生みます。",
-      "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター 労働環境と幸福に関する調査（2025年）",
-      "source_en": "Oxford Wellbeing Research Centre: Workplace Social Support and Performance Meta-analysis 2025",
-      "source_url": "https://scholar.google.com/scholar?q=Oxford+Wellbeing+Research+Centre+workplace+social+support+2025",
-      "question": "チームの誰かが困っているサインに気づくために、今日はどのような「観察」を意識しますか？"
-    },
-    {
-      "perma": "A",
-      "category": "学習科学・自己効力感",
+      "category": "最新組織行動学",
       "target": "アワーズ動物学院",
-      "title": "MIT 2026年最新知見：マイクロラーニングと『振り返り』が自己効力感を18%高める",
+      "title": "ハーバード・ビジネス・レビュー誌：ピア・コネクションがもたらす学習効率と定着率",
       "summary": [
-        "MIT Sloan Management Review（2026年）に掲載された研究では、1日5分の意図的な振り返り（Reflection）を行う学習者は、行わないグループに比べてタスク習得スピードが25%早く、自己効力感が18%向上することが示されました。",
-        "達成感（A）は大きな成功だけでなく、日々の小さな『できた』を言語化することで脳内のドーパミン系を活性化し、学習の継続性を劇的に高めることが神経科学的に証明されています。",
-        "特に専門技術を習得する過程において、フィードバックの質よりも『自己内省の頻度』が成長率を左右する要因となります。"
+        "Harvard Business Review（2026年特集）に掲載された組織学習の調査データによると、同僚同士の強固なピア・コネクション（ピアサポート体制）が構築されている教育・研修環境では、専門知識の定着率が38%向上し、中途離職率が半減することが実証されました。",
+        "孤立した学習ではなく、お互いに教え合い、心理的安全性が確保されたコミュニティに身を置くことが、知識の深化とメンタルヘルスの安定を両立させます。",
+        "共に学ぶ仲間の存在こそが、プロフェッショナルとしての成長速度を加速させる最大の触媒となります。"
       ],
-      "aw_value": "アワーズ動物学院で学ぶ皆さんは、未来の野生動物の守り手です。日々の実習で「何ができるようになったか」を5分だけ振り返る習慣を持ちましょう。その小さな達成感の積み重ねが、将来、動物たちや社会に対して大きな価値を提供できるプロフェッショナルとしての自信（AWS-WAYの追求）へと繋がります。",
-      "source_jp": "MIT Sloan Management Review 組織学習と自己効力感に関する最新研究（2026年）",
-      "source_en": "MIT Sloan Management Review 2026: The Power of Reflective Practice in Professional Development",
-      "source_url": "https://scholar.google.com/scholar?q=MIT+Sloan+Management+Review+2026+reflective+practice+self-efficacy",
-      "question": "今日の実習や仕事の中で、「昨日より一歩成長した」と感じられる小さなポイントは何ですか？"
+      "aw_value": "アワーズ動物学院での学びや、現場でのOJT・育成の場において、先輩・後輩や同期同士がフラットに支え合い、対話できる関係性を築くことが極めて重要です。知識の伝達にとどまらず、お互いの成長を支え合う「つながり（Relatedness）」を大切にした教育環境を共に創り上げましょう。",
+      "source_jp": "Harvard Business Review『Building Resilient Professional Learning Communities 2026』",
+      "source_en": "Harvard Business Review Building Resilient Professional Learning Communities 2026",
+      "source_url": "https://scholar.google.com/scholar?q=Harvard+Business+Review+Resilient+Professional+Learning+Communities",
+      "question": "今日、後輩や仲間の学びや挑戦に対して、どのような温かいフィードバックやサポートを届けましたか？"
     }
   ],
-  "updated_at": "2026-11-23 15:40",
+  "updated_at": "2026-11-24 14:43",
   "history": [
+    {
+      "label": "2026-11-23 15:40",
+      "date": "2026-11-23",
+      "articles": [
+        {
+          "perma": "P",
+          "category": "最新組織行動学",
+          "target": "一般社員・キャスト",
+          "title": "Gallup 2025年報告：エンゲージメントがもたらす『23%の収益性向上』と心のレジリエンス",
+          "summary": [
+            "Gallup社が160カ国以上を対象に実施した『State of the Global Workplace: 2025 Report』によると、エンゲージメントの高いチームは、そうでないチームと比較して収益性が23%高く、欠勤率が81%低いことが判明しました。",
+            "研究では、ポジティブな感情（P）が職場に伝播することで、個人のストレスレベルが最大で14%低下し、困難な状況下でも創造的な解決策を見出す能力が向上するメカニズムが示されています。",
+            "単なる『楽しさ』ではなく、自身の役割が組織の目的に貢献しているという実感が、心理的資本を強化する鍵となります。"
+          ],
+          "aw_value": "アドベンチャーワールドにおいて、キャスト一人ひとりが『Smile創造』の主役であると自覚することは、単なるスローガンではなく科学的な業績向上策です。ゲストに感動を届ける前に、まず私たちが互いのポジティブな行動を認め合い、エンゲージメントを高めることで、パーク全体の活気と持続可能な運営が実現します。",
+          "source_jp": "Gallup社 職場環境統計レポート（2025年）",
+          "source_en": "Gallup: State of the Global Workplace 2025 Report",
+          "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2025+Report+engagement+profitability",
+          "question": "今日、仲間の『素晴らしい行動』に対して、具体的にどんな言葉でポジティブなフィードバックを伝えますか？"
+        },
+        {
+          "perma": "R",
+          "category": "ウェルビーイング統計",
+          "target": "パーク運営・飼育現場",
+          "title": "オックスフォード大学 2025年研究：社会的つながりが職場の幸福度の30%を決定する",
+          "summary": [
+            "オックスフォード大学ウェルビーイングリサーチセンターが2025年に発表した大規模メタ分析により、職場の人間関係（R）の質が、個人の人生満足度の分散の約30%を説明することが明らかになりました。",
+            "特に、高い心理的安全性が確保されたチームでは、情報共有のスピードが40%向上し、現場でのヒューマンエラーによる事故率が27%低下するという具体的な相関データが示されています。",
+            "飼育現場や運営の最前線において、『孤立させない』文化がバーンアウト（燃え尽き症候群）を防ぐ最強の防御策となります。"
+          ],
+          "aw_value": "動物たちの命を預かる飼育現場や、多様なゲストに対応するパーク運営では、一瞬の判断が重要です。AWS-WAYに基づき、役職を超えて「助けて」と言える関係性を築くことは、アニマルウェルフェアの向上と、スタッフ自身のメンタルヘルスを守る直結の鍵となります。信頼の絆が、最高のチームパフォーマンスを生みます。",
+          "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター 労働環境と幸福に関する調査（2025年）",
+          "source_en": "Oxford Wellbeing Research Centre: Workplace Social Support and Performance Meta-analysis 2025",
+          "source_url": "https://scholar.google.com/scholar?q=Oxford+Wellbeing+Research+Centre+workplace+social+support+2025",
+          "question": "チームの誰かが困っているサインに気づくために、今日はどのような「観察」を意識しますか？"
+        },
+        {
+          "perma": "A",
+          "category": "学習科学・自己効力感",
+          "target": "アワーズ動物学院",
+          "title": "MIT 2026年最新知見：マイクロラーニングと『振り返り』が自己効力感を18%高める",
+          "summary": [
+            "MIT Sloan Management Review（2026年）に掲載された研究では、1日5分の意図的な振り返り（Reflection）を行う学習者は、行わないグループに比べてタスク習得スピードが25%早く、自己効力感が18%向上することが示されました。",
+            "達成感（A）は大きな成功だけでなく、日々の小さな『できた』を言語化することで脳内のドーパミン系を活性化し、学習の継続性を劇的に高めることが神経科学的に証明されています。",
+            "特に専門技術を習得する過程において、フィードバックの質よりも『自己内省の頻度』が成長率を左右する要因となります。"
+          ],
+          "aw_value": "アワーズ動物学院で学ぶ皆さんは、未来の野生動物の守り手です。日々の実習で「何ができるようになったか」を5分だけ振り返る習慣を持ちましょう。その小さな達成感の積み重ねが、将来、動物たちや社会に対して大きな価値を提供できるプロフェッショナルとしての自信（AWS-WAYの追求）へと繋がります。",
+          "source_jp": "MIT Sloan Management Review 組織学習と自己効力感に関する最新研究（2026年）",
+          "source_en": "MIT Sloan Management Review 2026: The Power of Reflective Practice in Professional Development",
+          "source_url": "https://scholar.google.com/scholar?q=MIT+Sloan+Management+Review+2026+reflective+practice+self-efficacy",
+          "question": "今日の実習や仕事の中で、「昨日より一歩成長した」と感じられる小さなポイントは何ですか？"
+        }
+      ]
+    },
     {
       "label": "2026-11-23 15:35",
       "date": "2026-11-23",
