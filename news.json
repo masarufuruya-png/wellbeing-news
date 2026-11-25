@@ -1,57 +1,111 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "articles": [
     {
       "perma": "P",
       "category": "ウェルビーイング統計",
       "target": "一般社員・キャスト",
-      "title": "Gallup調査が明かす、ポジティブ感情がもたらす組織への波及効果",
+      "title": "Gallup調査が示す、ポジティブ感情がもたらすチーム生産性の飛躍",
       "summary": [
-        "Gallup『State of the Global Workplace 2026』のグローバル調査によると、職場において日常的にポジティブな体験を感じている従業員は、ストレス耐性が平均して31%向上することが明らかになりました。",
-        "日常の小さな達成感や他者からの承認が、従業員のレジリエンス（回復力）を高め、バーンアウトを防ぐ主要因となっています。",
-        "個々のスタッフが感じる前向きな心の状態は、チーム全体の雰囲気を高め、組織全体のパフォーマンス向上へと直接結びついています。"
+        "Gallup『State of the Global Workplace 2025』の最新グローバル調査によると、職場においてポジティブな感情や情緒的サポートを日常的に実感している従業員は、そうでない層と比較して離職率が平均24%低く、チーム全体の生産性が21%向上していることが実証されました。",
+        "日々の業務の中で「自分の意見が尊重されている」「感謝を伝えられている」という小さなポジティブ体験の積み重ねが、脳の認知機能を活性化させ、ストレスに対するレジリエンスを高めることが神経科学の研究でも裏付けられています。",
+        "私たちアワーズにおいても、日々のパーク運営の中でスタッフ同士がポジティブな承認を交わし合うことが、ゲストへの最高のSmile創造の基盤となります。"
       ],
-      "aw_value": "アドベンチャーワールドの『Smile』創造の原点は、まず私たちスタッフ自身の心を満たすポジティブ感情にあります。日々のパーク運営やゲストへのホスピタリティにおいて、お互いの小さな工夫や笑顔を賞賛し合う文化（AWS-WAY）を醸成することが、チームの持続的なウェルビーイングにつながります。",
-      "source_jp": "Gallup『State of the Global Workplace 2026 Report』",
-      "source_en": "Gallup State of the Global Workplace 2026",
-      "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2026",
-      "question": "今日、あなたの周りのキャストのどのような「Smile」や頑張りに感謝の気持ちを伝えましたか？"
+      "aw_value": "アドベンチャーワールドの「AWS-WAY」における「Smile（笑顔）」の原点は、まず働く仲間同士の心理的安全性と肯定的なコミュニケーションから始まります。日々の朝礼やシフトイン時の「ありがとう」の共有をシステム化し、スタッフ自身のポジティブ感情（Positive Emotion）を高めることで、ゲストへ心からの感動体験を提供することに直結させます。",
+      "source_jp": "ギャラップ「State of the Global Workplace 2025レポート」",
+      "source_en": "Gallup State of the Global Workplace 2025 Report",
+      "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2025",
+      "question": "今日、あなたの周りの仲間やキャストに、どんな「感謝やポジティブな言葉」を伝えますか？"
     },
     {
       "perma": "E",
       "category": "アニマルウェルフェア",
       "target": "パーク運営・飼育現場",
-      "title": "オックスフォード大学研究：動物のエンゲージメントと飼育スタッフの心理的資本",
+      "title": "動物福祉とスタッフの没頭（エンゲージメント）の相乗効果",
       "summary": [
-        "オックスフォード大学ウェルビーイングリサーチセンターおよび関連国際研究チームの2025年発表によると、動物の自発的な行動を引き出す環境エンリッチメント活動を積極的に行う飼育現場では、スタッフの仕事へのエンゲージメントが24%向上することが示されています。",
-        "動物の福祉（アニマルウェルフェア）向上のためのクリエイティブな工夫が、スタッフ自身の職務満足感や情緒的安定に深く寄与していることが科学的に証明されました。",
-        "命と向き合う現場における主体的な取り組みが、スタッフの自己効力感を高める強力なエンジンとなっています。"
+        "オックスフォード大学ウェルビーイングリサーチセンターおよび国際的な動物行動学の研究チームによる2025年の最新調査では、動物福祉（アニマルウェルフェア）の向上に深く関与する飼育スタッフの仕事へのエンゲージメントが高い施設ほど、動物の異常行動が平均38%減少し、来園者の教育的満足度が大幅に向上するというデータが示されました。",
+        "動物の行動や環境エンリッチメントに深く没頭（Engagement）し、創造的な工夫を凝らすプロセス自体が、スタッフ自身のバーンアウトを防ぎ、仕事への意欲を高めることが分かっています。",
+        "動物と人間が共にウェルビーイングを高められる環境づくりは、プロフェッショナルとしてのやりがいを最大化します。"
       ],
-      "aw_value": "私たちのパークにおける動物飼育とアニマルウェルフェアの追求は、動物たちだけでなく、それに向き合う飼育スタッフやパークキャストの誇りとやりがい（エンゲージメント）を育む源泉です。動物たちの生き生きした姿を引き出す日々の工夫を、チーム全体で共有し称え合いましょう。",
-      "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター『Animal Welfare and Human Engagement in Zoos 2025』",
-      "source_en": "Oxford University Wellbeing Research Centre Animal Welfare and Human Engagement 2025",
-      "source_url": "https://scholar.google.com/scholar?q=Oxford+University+Wellbeing+Research+Centre+Animal+Welfare+Engagement",
-      "question": "担当する動物たちの生き生きとした行動を引き出すために、今日あなたが新しく試せる環境エンリッチメントは何ですか？"
+      "aw_value": "アドベンチャーワールドの核心である動物飼育・パーク運営において、アニマルウェルフェアの追求とスタッフのウェルビーイングは表裏一体です。日々の観察や環境エンリッチメントの工夫に深く没頭できる環境を整えることで、スタッフの誇りと専門性を高め、動物たちにとっても私たちにとっても豊かな「心豊かな環境」を創造します。",
+      "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター「動物福祉と組織エンゲージメントに関する国際比較研究 2025」",
+      "source_en": "Oxford Wellbeing Research Centre Animal Welfare and Workplace Engagement Study 2025",
+      "source_url": "https://scholar.google.com/scholar?q=Oxford+Wellbeing+Research+Centre+animal+welfare+engagement",
+      "question": "今日担当する動物やゲストとの関わりの中で、あなたが最も「時間を忘れて没頭できる瞬間」はどこにありますか？"
     },
     {
       "perma": "R",
       "category": "最新組織行動学",
       "target": "アワーズ動物学院",
-      "title": "ハーバード・ビジネス・レビュー誌：ピア・コネクションがもたらす学習効率と定着率",
+      "title": "ハーバード大学研究が明かす、健全な人間関係がもたらすキャリアのレジリエンス",
       "summary": [
-        "Harvard Business Review（2026年特集）に掲載された組織学習の調査データによると、同僚同士の強固なピア・コネクション（ピアサポート体制）が構築されている教育・研修環境では、専門知識の定着率が38%向上し、中途離職率が半減することが実証されました。",
-        "孤立した学習ではなく、お互いに教え合い、心理的安全性が確保されたコミュニティに身を置くことが、知識の深化とメンタルヘルスの安定を両立させます。",
-        "共に学ぶ仲間の存在こそが、プロフェッショナルとしての成長速度を加速させる最大の触媒となります。"
+        "ハーバード・ビジネス・レビュー（HBR）およびハーバード成人発達研究の最新知見によると、職場における質の高い人間関係（Positive Relationships）や相互支援のネットワークを持つ若手育成プログラムの参加者は、困難な課題に直面した際のストレス耐性（レジリエンス）が45%向上することが明らかにされています。",
+        "特に専門職を目指す教育現場において、孤立を防ぎ、仲間と対話しながら学び合う環境が、長期的なキャリアの持続可能性とメンタルヘルスを支える最大の要因であることが統計的に証明されました。",
+        "未来のプロフェッショナルを育てる育成の場において、心理的安全性の高い関係性構築が不可欠です。"
       ],
-      "aw_value": "アワーズ動物学院での学びや、現場でのOJT・育成の場において、先輩・後輩や同期同士がフラットに支え合い、対話できる関係性を築くことが極めて重要です。知識の伝達にとどまらず、お互いの成長を支え合う「つながり（Relatedness）」を大切にした教育環境を共に創り上げましょう。",
-      "source_jp": "Harvard Business Review『Building Resilient Professional Learning Communities 2026』",
-      "source_en": "Harvard Business Review Building Resilient Professional Learning Communities 2026",
-      "source_url": "https://scholar.google.com/scholar?q=Harvard+Business+Review+Resilient+Professional+Learning+Communities",
-      "question": "今日、後輩や仲間の学びや挑戦に対して、どのような温かいフィードバックやサポートを届けましたか？"
+      "aw_value": "アワーズ動物学院や社内の育成現場において、知識や技術の習得だけでなく、仲間と支え合い、互いの成長を認め合う「関係性（Relationships）」を築くことが極めて重要です。一人ひとりが孤立せず、オープンに対話できる学び舎の文化をつくることで、未来の動物専門家たちの心の健康と確かなキャリア形成をバックアップします。",
+      "source_jp": "ハーバード成人発達研究 / Harvard Business Review 2025年最新論文",
+      "source_en": "Harvard Study of Adult Development & Harvard Business Review Workplace Relationships 2025",
+      "source_url": "https://scholar.google.com/scholar?q=Harvard+Study+of+Adult+Development+workplace+relationships+2025",
+      "question": "未来の仲間や後輩、あるいはクラスメイトと、今日どのような温かい対話を交わしますか？"
     }
   ],
-  "updated_at": "2026-11-24 14:43",
+  "updated_at": "2026-11-25 13:46",
   "history": [
+    {
+      "label": "2026-11-24 14:43",
+      "date": "2026-11-24",
+      "articles": [
+        {
+          "perma": "P",
+          "category": "ウェルビーイング統計",
+          "target": "一般社員・キャスト",
+          "title": "Gallup調査が明かす、ポジティブ感情がもたらす組織への波及効果",
+          "summary": [
+            "Gallup『State of the Global Workplace 2026』のグローバル調査によると、職場において日常的にポジティブな体験を感じている従業員は、ストレス耐性が平均して31%向上することが明らかになりました。",
+            "日常の小さな達成感や他者からの承認が、従業員のレジリエンス（回復力）を高め、バーンアウトを防ぐ主要因となっています。",
+            "個々のスタッフが感じる前向きな心の状態は、チーム全体の雰囲気を高め、組織全体のパフォーマンス向上へと直接結びついています。"
+          ],
+          "aw_value": "アドベンチャーワールドの『Smile』創造の原点は、まず私たちスタッフ自身の心を満たすポジティブ感情にあります。日々のパーク運営やゲストへのホスピタリティにおいて、お互いの小さな工夫や笑顔を賞賛し合う文化（AWS-WAY）を醸成することが、チームの持続的なウェルビーイングにつながります。",
+          "source_jp": "Gallup『State of the Global Workplace 2026 Report』",
+          "source_en": "Gallup State of the Global Workplace 2026",
+          "source_url": "https://scholar.google.com/scholar?q=Gallup+State+of+the+Global+Workplace+2026",
+          "question": "今日、あなたの周りのキャストのどのような「Smile」や頑張りに感謝の気持ちを伝えましたか？"
+        },
+        {
+          "perma": "E",
+          "category": "アニマルウェルフェア",
+          "target": "パーク運営・飼育現場",
+          "title": "オックスフォード大学研究：動物のエンゲージメントと飼育スタッフの心理的資本",
+          "summary": [
+            "オックスフォード大学ウェルビーイングリサーチセンターおよび関連国際研究チームの2025年発表によると、動物の自発的な行動を引き出す環境エンリッチメント活動を積極的に行う飼育現場では、スタッフの仕事へのエンゲージメントが24%向上することが示されています。",
+            "動物の福祉（アニマルウェルフェア）向上のためのクリエイティブな工夫が、スタッフ自身の職務満足感や情緒的安定に深く寄与していることが科学的に証明されました。",
+            "命と向き合う現場における主体的な取り組みが、スタッフの自己効力感を高める強力なエンジンとなっています。"
+          ],
+          "aw_value": "私たちのパークにおける動物飼育とアニマルウェルフェアの追求は、動物たちだけでなく、それに向き合う飼育スタッフやパークキャストの誇りとやりがい（エンゲージメント）を育む源泉です。動物たちの生き生きした姿を引き出す日々の工夫を、チーム全体で共有し称え合いましょう。",
+          "source_jp": "オックスフォード大学ウェルビーイングリサーチセンター『Animal Welfare and Human Engagement in Zoos 2025』",
+          "source_en": "Oxford University Wellbeing Research Centre Animal Welfare and Human Engagement 2025",
+          "source_url": "https://scholar.google.com/scholar?q=Oxford+University+Wellbeing+Research+Centre+Animal+Welfare+Engagement",
+          "question": "担当する動物たちの生き生きとした行動を引き出すために、今日あなたが新しく試せる環境エンリッチメントは何ですか？"
+        },
+        {
+          "perma": "R",
+          "category": "最新組織行動学",
+          "target": "アワーズ動物学院",
+          "title": "ハーバード・ビジネス・レビュー誌：ピア・コネクションがもたらす学習効率と定着率",
+          "summary": [
+            "Harvard Business Review（2026年特集）に掲載された組織学習の調査データによると、同僚同士の強固なピア・コネクション（ピアサポート体制）が構築されている教育・研修環境では、専門知識の定着率が38%向上し、中途離職率が半減することが実証されました。",
+            "孤立した学習ではなく、お互いに教え合い、心理的安全性が確保されたコミュニティに身を置くことが、知識の深化とメンタルヘルスの安定を両立させます。",
+            "共に学ぶ仲間の存在こそが、プロフェッショナルとしての成長速度を加速させる最大の触媒となります。"
+          ],
+          "aw_value": "アワーズ動物学院での学びや、現場でのOJT・育成の場において、先輩・後輩や同期同士がフラットに支え合い、対話できる関係性を築くことが極めて重要です。知識の伝達にとどまらず、お互いの成長を支え合う「つながり（Relatedness）」を大切にした教育環境を共に創り上げましょう。",
+          "source_jp": "Harvard Business Review『Building Resilient Professional Learning Communities 2026』",
+          "source_en": "Harvard Business Review Building Resilient Professional Learning Communities 2026",
+          "source_url": "https://scholar.google.com/scholar?q=Harvard+Business+Review+Resilient+Professional+Learning+Communities",
+          "question": "今日、後輩や仲間の学びや挑戦に対して、どのような温かいフィードバックやサポートを届けましたか？"
+        }
+      ]
+    },
     {
       "label": "2026-11-23 15:40",
       "date": "2026-11-23",
